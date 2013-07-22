@@ -15,6 +15,6 @@ This page is intended to link to some useful VHDL resources and set out the codi
 A coding style guide will be linked to which should be followed (but unlikely to be rigidly enforced provided the code is readable and working)
 
 There are a couple of additional requirements
- - Code must be synthesize-able
- - Code must be device agnostic (e.g. no use of Altera specific IP)
- - Code must use Doxygen style comments for automatic document generation 
+ * Code must be synthesize-able
+ * Code must be device agnostic (e.g. no use of Altera specific IP)
+ * Code must use Doxygen style comments for automatic document generation 
