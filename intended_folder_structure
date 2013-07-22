@@ -1,0 +1,8 @@
+Folder structure to be used
+
+-> bench (for Modelsim test benches)
+-> doc (for design documentation)
+-> rtl (for source files)
+-> syn (synthesised code and project settigns)
+   |
+   -> <target> (specific to target device; may be multiple of these)
