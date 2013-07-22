@@ -20,5 +20,5 @@ Any known plaintext/cyphertext pairs should be linked here. It's useful for test
 For things which aren't directly useful but might be interesting
 
 ==Paper-based Enigma Machines==
-* [http://mckoss.com/Crypto/Enigma.htm]
-* [http://www.howtogeek.com/115767/make-your-own-paper-craft-enigma-machine-diy-project/]
+ * [http://mckoss.com/Crypto/Enigma.htm]
+ * [http://www.howtogeek.com/115767/make-your-own-paper-craft-enigma-machine-diy-project/]
