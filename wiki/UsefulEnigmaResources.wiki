@@ -1,0 +1,24 @@
+#summary Links or References to Useful Information on the Enigma Machine
+#labels Featured
+
+= Introduction =
+A repository for useful information found either on the internet or in dead-tree format (ISBNs if possible for real books).
+
+= Interesting Background =
+
+
+
+= Details of Machine =
+
+
+
+= Known Plaintext/Cyphertext =
+Any known plaintext/cyphertext pairs should be linked here. It's useful for testing the logic is correct.
+
+
+= Other Interesting Stuff = 
+For things which aren't directly useful but might be interesting
+
+==Paper-based Enigma Machines==
+*[http://mckoss.com/Crypto/Enigma.htm]
+*[http://www.howtogeek.com/115767/make-your-own-paper-craft-enigma-machine-diy-project/]
