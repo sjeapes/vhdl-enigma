@@ -1,0 +1,14 @@
+Folder structure to be used
+
+-> bench (for Modelsim test benches)
+-> doc (for design documentation)
+-> hardware (for PCB/Schematic Data)
+   |
+   -> doc (hardware specific documentation)
+   -> manufacturing_data (Gerbers/BoMs to actaully get the boards made)
+   -> rawcard (the pcb data, format/tool to be decided)
+   -> schem (the schematic data, format/tool to be decided)
+-> rtl (for source files)
+-> syn (synthesised code and project settigns)
+   |
+   -> <target> (specific to target device; may be multiple of these)
