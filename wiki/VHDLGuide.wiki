@@ -8,6 +8,8 @@ This page is intended to link to some useful VHDL resources and set out the codi
 
 = VHDL Resources =
 
+* [http://www.vhdl.org/rassp/vhdl/guidelines/vhdlqrc.pdf VHDL Quick Reference Guide]
+
 
 
 = Coding Style =
