@@ -5,11 +5,13 @@
 A repository for useful information found either on the internet or in dead-tree format (ISBNs if possible for real books).
 
 = Interesting Background =
-
+* [http://www.codesandciphers.org.uk/enigma/index.htm Tony Sale's Codes and Cyphers]
 
 
 = Details of Machine =
-
+ * [http://en.wikipedia.org/wiki/Enigma_machine Wikipedia Article on Enigma Machine]
+ * Wheel and Rotor wirings [http://www.ellsbury.com/ultraenigmawirings.htm]
+ * Second Wheel and Rotor Reference [http://www.codesandciphers.org.uk/enigma/rotorspec.htm on codesandcyphers.org.uk]
 
 
 = Known Plaintext/Cyphertext =
