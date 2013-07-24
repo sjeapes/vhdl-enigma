@@ -1,0 +1,62 @@
+/*
+Filename: letters_pak.vhd
+
+Description: 
+Debounce module - synchronizes signals with clock domain 
+(clock domain provided on clock pin)
+Also, optionally debounces signals with configurable lengths 
+(to allow for either switch debounce or simple de-glitch)
+
+
+    Copyright (C) 2013 Stephen Jeapes (vhdl-enigma@arcoarena.co.uk)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
+
+-- Library Clause(s) (optional)
+-- Use Clause(s) (optional)
+
+package <package_name> is
+
+   -- Type Declaration (optional)
+
+   -- Subtype Declaration (optional)
+
+   -- Constant Declaration (optional)
+
+   -- Signal Declaration (optional)
+
+   -- Component Declaration (optional)
+
+end <package_name>;
+
+package body <package_name> is
+
+   -- Type Declaration (optional)
+
+   -- Subtype Declaration (optional)
+
+   -- Constant Declaration (optional)
+
+   -- Function Declaration (optional)
+
+   -- Function Body (optional)
+
+   -- Procedure Declaration (optional)
+
+   -- Procedure Body (optional)
+
+end <package_name>;
