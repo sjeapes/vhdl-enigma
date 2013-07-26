@@ -50,9 +50,6 @@ set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 5
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
-set_global_assignment -name VHDL_FILE ../../rtl/top_level.vhd
-set_global_assignment -name VHDL_FILE ../../rtl/debounce.vhd
-set_global_assignment -name VHDL_FILE ../../rtl/letters_pak.vhd
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH STILL AIR"
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS OFF
 set_global_assignment -name SMART_RECOMPILE ON
@@ -63,3 +60,10 @@ set_global_assignment -name OPTIMIZE_POWER_DURING_SYNTHESIS OFF
 set_global_assignment -name OPTIMIZE_HOLD_TIMING "IO PATHS AND MINIMUM TPD PATHS"
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING OFF
 set_global_assignment -name FITTER_EFFORT "FAST FIT"
+set_global_assignment -name VHDL_FILE ../../rtl/wheel.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/reflector.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/plugboard.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/machine.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/top_level.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/debounce.vhd
+set_global_assignment -name VHDL_FILE ../../rtl/letters_pak.vhd

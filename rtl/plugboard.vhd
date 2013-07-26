@@ -25,7 +25,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.letters_pack.all;
+use work.letters_pak.all;
 
 
 entity plugboard is
@@ -47,6 +47,7 @@ architecture rtl of plugboard is
 
 begin
 
+--! Dummy statement for now, no plugboard settings supported
 sig_out <= sig_in;
 
 end rtl;

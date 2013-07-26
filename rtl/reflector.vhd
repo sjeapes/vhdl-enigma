@@ -27,7 +27,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.letters_pack.all;
+use work.letters_pak.all;
 
 
 entity reflector is
@@ -39,26 +39,25 @@ entity reflector is
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
       sig_in   :  in letter;   --! Letter coming into the entity
       sig_out  :  out letter   --! Partially encoded letter leaving entity
-	);
+   );
 
 end entity;
 
 architecture rtl of reflector is
 
-type wiring is array (letter) of letter;
-signal reflector_b: wiring := 
-	(y,r,u,h,q,s,l,d,p,x,n,g,o,k,m,i,e,b,f,z,c,w,v,j,a,t);
-	
+constant reflector_b: letter_mapping := 
+   (y,r,u,h,q,s,l,d,p,x,n,g,o,k,m,i,e,b,f,z,c,w,v,j,a,t);
+   
 begin
 
 reflector: process(clk_in,reset_in)
 begin
-	if reset_in then
-		sig_out <= a;
-	elsif rising_edge(clk_in) then
-		sig_out <= (sig_in)
-	end if;
-	
+   if reset_in = '1' then
+      sig_out <= ' ';
+   elsif rising_edge(clk_in) then
+      sig_out <= reflector_b(sig_in);
+   end if;
+
 end process;
 
 

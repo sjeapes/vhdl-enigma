@@ -25,10 +25,15 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.letters_pack.all;
+
+use work.letters_pak.all;
 
 
 entity machine is
+   generic(
+      num_wheels: natural := 3; --! The number of wheels in the machine, only 3 or 4 are valid
+      wheel_order: wheel_order := ('1','2','3','4') --! The wheels fitted in the machine, highest wheel number to lowest
+   );
 
    port 
    (

@@ -44,6 +44,28 @@ end top_level;
 
 architecture rtl of top_level is
 
+component machine
+
+   generic
+   (
+      num_wheels: natural := 3; --! The number of wheels in the machine, only 3 or 4 are valid
+      wheel_order: wheel_order := ('1','2','3','4') --! The wheels fitted in the machine, highest wheel number to lowest
+   );
+
+   port
+   (
+      clk_in   :  in std_logic; --! Clock input signal, 
+         --! output signals will be synchroized to this clock domain
+         
+      reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+      sig_in   :  in letter;
+      
+      sig_out  :  out letter      
+   );
+
+end component;
+
+
 
 begin
 
