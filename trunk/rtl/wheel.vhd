@@ -26,7 +26,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-use work.letters_pack.all;
+use work.letters_pak.all;
 
 
 entity wheel is
@@ -44,22 +44,29 @@ end entity;
 
 architecture rtl of wheel is
 
-type wheel_variants is (1,2,3,4,5,6,7,8,beta,gamma);
 
-type wiring is array (wheel_variants) of array (letter) of letter;
+type wheel_wiring is array(wheel_variants'left to wheel_variants'right) of letter_mapping;
 
-constant turnover is array (wheel_variants) of letter;
-	
+
+type wheel is
+record
+   number : wheel_variants; --! The wheel variant
+   wiring : wheel_wiring; --! Wiring of the wheel
+   turnover : letter; --! Turnover position
+end record;
+
+
 begin
 
-reflector: process(clk_in,reset_in)
+--! Dummy process for the moment to send data direct through wheel
+procWheel: process(clk_in,reset_in)
 begin
-	if reset_in then
-		sig_out <= a;
-	elsif rising_edge(clk_in) then
-		sig_out <= (sig_in)
-	end if;
-	
+   if reset_in = '1' then
+      sig_out <= ' ';
+   elsif rising_edge(clk_in) then
+      sig_out <= (sig_in);
+   end if;
+
 end process;
 
 
