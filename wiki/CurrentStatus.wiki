@@ -1,0 +1,8 @@
+#summary Current Status and Next Planned Steps
+#labels Featured
+
+= Current Status =
+Currently coding the basic machine.
+Empty templates created
+
+Starting to fill in dummy sections to have the full structure up and working before starting to implement the wheels, plugboard inner workings
