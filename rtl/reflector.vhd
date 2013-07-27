@@ -46,7 +46,7 @@ end entity;
 architecture rtl of reflector is
 
 constant reflector_b: letter_mapping := 
-   (y,r,u,h,q,s,l,d,p,x,n,g,o,k,m,i,e,b,f,z,c,w,v,j,a,t);
+   (y,r,u,h,q,s,l,d,p,x,n,g,o,k,m,i,e,b,f,z,c,w,v,j,a,t,' ');
    
 begin
 
