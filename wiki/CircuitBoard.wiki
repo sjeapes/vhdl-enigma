@@ -9,13 +9,26 @@
 
 = Design =
 
+Elements Required:
+ * Power Supply Input
+ * Local Regulation
+ * Input Method
+ * CPLD
+ * Output Method
+ * Fixing/Tooling holes
+ * Programming interface
+ * 
+
 == Power ==
 Won't just use DC-brick unless it's a common connector
 Do not intend to supply PSU - adds too many complications with regions and safety implications
 
 
  * Micro USB
- * 
+ * Battery
+   * PP3
+   * AA
+ * External + Battery?
 
 
 == Input ==
@@ -37,17 +50,48 @@ Options
 == CPLD ==
 
 No BGA parts - TQFP to be used
+Estimated Logic requirements is TBD
+Number of pins required is TBD (number of pins unlikely to be a restricting factor on part selection)
 
-|| Feature || Altera Max II/V || Lattice MachX02 || Xilinx CoolRunnerII || Actel ||
+|| Feature || Altera Max II/V || Lattice Mach-X02 || Xilinx CoolRunnerII ||
+|| Free Design S/W - Windows + Linux || Y || Y || *N* (3)||
+|| TQFP Package    || Y || Y || - (4) ||
+|| RS Cost /unit (~1270LUT) (1)  || 23.36GBP || 8.04GBP || - (4) ||
+|| Power Req(2)    || 3.3V / 1.8V & 3.3V || 3.3V || -(4)||
 
-|| Free Design S/W || Y || Y || <Xilinx> || <Actel> ||
-|| TQFP Package    || Y || Y || <Xilinx> || <Actel> ||
-|| RS Cost /unit   || <Altera> || <Lattice> || <Xilinx> || <Actel> ||
-|| Internal Oscillator(1) || Y || <Lattice> || <Xilinx> || <Actel> ||
-|| Power Req(2)    || 3.3V / 1.8V & 3.3V || <Lattice> || <Xilinx> || <Actel> ||
-
-(1) Internal Oscillator reduces cost
+(1) Price of smallest ~1270LUT, TQFP package device on the UK RS website. All other chip options ignored and cheapest available for a single part selected. Prices correct as of 27-Jul-13
 (2) More power rails require more regulators to supply them which will increase cost
+(3) Zync devices only on Free edition?
+(4) Xilinx ruled out due to lack of free software
 
 || <Feature> || <Altera> || <Lattice> || <Xilinx> || <Actel> ||
 
+===Other Notes===
+*Altera*
+
+Altera device has internal oscillator which could be used avoiding the need for an external device
+
+Dev Kit cost - $74.95
+
+
+*Lattice*
+Free IP available (providing Lattice devices are used. IP Includes
+ * 8-bit and bigger soft-core processors
+ * I2C master & slave
+
+Hard-IP (timers, I2C) in MachX02 Parts
+
+MachX02 device has internal oscillator which could be used avoiding the need for an external device
+
+If the design is small enough there is also the ice40 range
+
+Dev Kit cost - $42.88 (Pico dev kit)
+Dev kit includes FTDI chips to allow serial link to chip, capacitive buttons (x4) and a small LCD screen for output.
+
+*Xilinx*
+Seemingly there is no free S/W available for the Cool-runner devices. This rules Xilinx Out
+
+
+===Final Selection===
+
+Lattice MachX02 with a view to migrate to the ice40 parts if resources permit
