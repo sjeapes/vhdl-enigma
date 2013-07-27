@@ -1,0 +1,53 @@
+#summary An Overview of the design for the circuit board
+#labels Phase-Design
+
+= Requirements / Intentions =
+
+ * Cheap - Sub $50, ideally sub $30
+ * Hand-soldering possible
+ * Any accessories (e.g. for input or power) should be commonly available and inexpensive (<$10 cost for extras)
+
+= Design =
+
+== Power ==
+Won't just use DC-brick unless it's a common connector
+Do not intend to supply PSU - adds too many complications with regions and safety implications
+
+
+ * Micro USB
+ * 
+
+
+== Input ==
+
+Options
+ * PS/2 Keyboard
+ * Switches
+ * Capacitative Buttons
+ * Serial Port
+
+
+== Output ==
+
+ * Serial Port
+ * LCD
+ * Individual (x26) LEDs
+
+
+== CPLD ==
+
+No BGA parts - TQFP to be used
+
+|| Feature || Altera Max II/V || Lattice MachX02 || Xilinx CoolRunnerII || Actel ||
+
+|| Free Design S/W || Y || Y || <Xilinx> || <Actel> ||
+|| TQFP Package    || Y || Y || <Xilinx> || <Actel> ||
+|| RS Cost /unit   || <Altera> || <Lattice> || <Xilinx> || <Actel> ||
+|| Internal Oscillator(1) || Y || <Lattice> || <Xilinx> || <Actel> ||
+|| Power Req(2)    || 3.3V / 1.8V & 3.3V || <Lattice> || <Xilinx> || <Actel> ||
+
+(1) Internal Oscillator reduces cost
+(2) More power rails require more regulators to supply them which will increase cost
+
+|| <Feature> || <Altera> || <Lattice> || <Xilinx> || <Actel> ||
+
