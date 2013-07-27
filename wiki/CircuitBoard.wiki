@@ -64,8 +64,6 @@ Number of pins required is TBD (number of pins unlikely to be a restricting fact
 (3) Zync devices only on Free edition?
 (4) Xilinx ruled out due to lack of free software
 
-|| <Feature> || <Altera> || <Lattice> || <Xilinx> || <Actel> ||
-
 ===Other Notes===
 *Altera*
 
@@ -79,9 +77,9 @@ Free IP available (providing Lattice devices are used. IP Includes
  * 8-bit and bigger soft-core processors
  * I2C master & slave
 
-Hard-IP (timers, I2C) in MachX02 Parts
+Hard-IP (timers, I2C) in Mach-X02 Parts
 
-MachX02 device has internal oscillator which could be used avoiding the need for an external device
+Mach-X02 device has internal oscillator which could be used avoiding the need for an external device
 
 If the design is small enough there is also the ice40 range
 
@@ -94,4 +92,4 @@ Seemingly there is no free S/W available for the Cool-runner devices. This rules
 
 ===Final Selection===
 
-Lattice MachX02 with a view to migrate to the ice40 parts if resources permit
+Lattice Mach-X02 with a view to migrate to the ice40 parts if resources permit
