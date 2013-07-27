@@ -32,12 +32,13 @@ entity top_level is
    (
       -- Input ports
       clk         : in  std_logic; --! Input clock
-      reset_n     : in  std_logic --! Reset input signal ('0' = Reset)
+      reset_n     : in  std_logic; --! Reset input signal ('0' = Reset)
 
       -- Inout ports
+		sig_in		: in  letter; 
 
       -- Output ports
-      
+      sig_out		: out letter
 
    );
 end top_level;
@@ -48,7 +49,7 @@ component machine
 
    generic
    (
-      num_wheels: natural := 3; --! The number of wheels in the machine, only 3 or 4 are valid
+      num_wheels: integer := 3; --! The number of wheels in the machine, only 3 or 4 are valid
       wheel_order: wheel_order := ('1','2','3','4') --! The wheels fitted in the machine, highest wheel number to lowest
    );
 
@@ -69,6 +70,19 @@ end component;
 
 begin
 
+enigma_machine : machine 
+	generic map
+	(
+		num_wheels => 3,
+		wheel_order => ('4','3','2','1')
+	)
+	port map 
+	(
+		clk_in => clk,
+		reset_in => not reset_n,
+		sig_in => sig_in,
+		sig_out => sig_out
+	);
 
 
 
