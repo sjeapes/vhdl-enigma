@@ -1,0 +1,58 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=3
+Current Config=compile
+[Configurations]
+compile=work
+[Library]
+vhdenigma=.\vhdenigma\vhdenigma.lib
+work=.\work\work.lib
+[Settings]
+AccessRead=1
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=0
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+PriorityLibNames=pmi_work;
+LibNames=ovi_machxo2;
+[LocalVhdlSets]
+CompileWithDebug=0
+[$LibMap$]
+vhdenigma=.
+work=.
+[LocalVerilogDirs]
+Count=0
+[DefineMacro]
+Global=
+[Files]
+/..\..\..\..\rtl\letters_pak.vhd=-1
+/..\..\..\..\rtl\debounce.vhd=-1
+/..\..\..\..\rtl\reflector.vhd=-1
+/..\..\..\..\rtl\plugboard.vhd=-1
+/..\..\..\..\rtl\wheel.vhd=-1
+/..\..\..\..\rtl\machine.vhd=-1
+/..\..\..\..\rtl\top_level.vhd=-1
+/untitled.awc=-1
+[Files.Data]
+.\..\..\..\rtl\letters_pak.vhd=VHDL Source Code
+.\..\..\..\rtl\debounce.vhd=VHDL Source Code
+.\..\..\..\rtl\reflector.vhd=VHDL Source Code
+.\..\..\..\rtl\plugboard.vhd=VHDL Source Code
+.\..\..\..\rtl\wheel.vhd=VHDL Source Code
+.\..\..\..\rtl\machine.vhd=VHDL Source Code
+.\..\..\..\rtl\top_level.vhd=VHDL Source Code
+.\src\untitled.awc=Accelerated Waveform Configuration
+[HierarchyViewer]
+HierarchyInformation=top_level|rtl|0 
+ShowHide=ShowTopLevel
+Selected=

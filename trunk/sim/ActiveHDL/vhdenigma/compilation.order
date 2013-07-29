@@ -1,0 +1,7 @@
+.\..\..\..\rtl\letters_pak.vhd
+.\..\..\..\rtl\debounce.vhd
+.\..\..\..\rtl\reflector.vhd
+.\..\..\..\rtl\plugboard.vhd
+.\..\..\..\rtl\wheel.vhd
+.\..\..\..\rtl\machine.vhd
+.\..\..\..\rtl\top_level.vhd

@@ -1,0 +1,13 @@
+33
+~E 1 "C:/svn/vhdl-enigma/rtl/debounce.vhd" 30 debounce
+~A 1 "C:/svn/vhdl-enigma/rtl/debounce.vhd" 53 rtl
+~E 1 "C:/svn/vhdl-enigma/rtl/machine.vhd" 35 machine
+~A 1 "C:/svn/vhdl-enigma/rtl/machine.vhd" 53 rtl
+~E 1 "C:/svn/vhdl-enigma/rtl/plugboard.vhd" 31 plugboard
+~A 1 "C:/svn/vhdl-enigma/rtl/plugboard.vhd" 46 rtl
+~E 1 "C:/svn/vhdl-enigma/rtl/reflector.vhd" 33 reflector
+~A 1 "C:/svn/vhdl-enigma/rtl/reflector.vhd" 48 rtl
+~E 1 "C:/svn/vhdl-enigma/rtl/top_level.vhd" 30 top_level
+~A 1 "C:/svn/vhdl-enigma/rtl/top_level.vhd" 46 rtl
+~E 1 "C:/svn/vhdl-enigma/rtl/wheel.vhd" 32 wheel
+~A 1 "C:/svn/vhdl-enigma/rtl/wheel.vhd" 47 rtl

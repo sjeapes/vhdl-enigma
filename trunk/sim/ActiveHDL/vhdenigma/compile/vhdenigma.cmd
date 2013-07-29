@@ -1,0 +1,1 @@
+-w -s "C:\svn\vhdl-enigma\sim\ActiveHDL\vhdenigma\library.cfg"  -j "C:\svn\vhdl-enigma\sim\ActiveHDL\vhdenigma\projlib.cfg"  -d "C:\svn\vhdl-enigma\sim\ActiveHDL\vhdenigma\compile"   -work work  -dbg -e 100 "C:\svn\vhdl-enigma\rtl\top_level.vhd"
