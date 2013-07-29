@@ -1,0 +1,4 @@
+MESSAGE "File: C:\svn\vhdl-enigma\rtl\top_level.vhd" 
+MESSAGE "Compile Entity "top_level"" 
+MESSAGE "Compile Architecture "rtl" of Entity "top_level"" 
+SUCCESS "Compile success 0 Errors 0 Warnings  Analysis time :  0.2 [s]" 

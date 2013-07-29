@@ -36,6 +36,12 @@ entity wheel is
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+	  
+	  --Wheel Atrributes and control
+	  turnover	:  in boolean; --! Input signal to tell the wheel to advance
+	  wheel_pos :  out letter; --! Output signal giving current wheel position
+	  wheel_set :  in letter;  --! Input used to set wheel position, when turnover = TRUE the wheel position will be set to the letter on this input signal, if this signal is set to ' ' it will be ignored
+	  
       siga_in   :  in letter;   --! Letter coming into the entity
       sigb_in   :  in letter;   --! Letter coming into the entity
       siga_out  :  out letter;   --! Partially encoded letter leaving entity      
@@ -61,7 +67,7 @@ end record;
 begin
 
 --! Dummy process for the moment to send data direct through wheel
-procWheel: process(clk_in,reset_in)
+wheelEncode: process(clk_in,reset_in)
 begin
    if reset_in = '1' then
       siga_out <= ' ';
@@ -70,6 +76,18 @@ begin
       siga_out <= (siga_in);
       sigb_out <= (sigb_in);
    end if;
+
+end process;
+
+wheelPos: process(clk_in, reset_in)
+begin
+	if reset_in = '1' then
+	
+	
+	elsif rising_edge(clk_in) then
+	
+	
+	end if;
 
 end process;
 

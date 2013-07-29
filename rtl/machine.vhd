@@ -28,6 +28,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
+use IEEE.std_logic_unsigned.all;
 
 use work.letters_pak.all;
 
@@ -42,7 +43,7 @@ entity machine is
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
-      reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+      reset_in :  in std_logic; --! reset_in signal, ('1' = reset_in)
       sig_in   :  in letter;
  
       sig_out  :  out letter
@@ -57,7 +58,13 @@ component wheel
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
-      reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+      reset_in :  in std_logic; --! reset_in signal, ('1' = reset_in)
+	  
+	  --Wheel Atrributes and control
+	  turnover	:  in boolean; --! Input signal to tell the wheel to advance
+	  wheel_pos :  out letter; --! Output signal giving current wheel position
+	  wheel_set :  in letter;  --! Input used to set wheel position, when turnover = TRUE the wheel position will be set to the letter on this input signal, if this signal is set to ' ' it will be ignored
+	  
       siga_in   :  in letter;   --! Letter coming into the entity
       sigb_in   :  in letter;   --! Letter coming into the entity
       siga_out  :  out letter;   --! Partially encoded letter leaving entity      
@@ -70,7 +77,7 @@ component reflector
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
-      reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+      reset_in :  in std_logic; --! reset_in signal, ('1' = reset_in)
       siga_in   :  in letter;   --! Letter coming into the entity
       sigb_in   :  in letter;   --! Letter coming into the entity
       siga_out  :  out letter;   --! Partially encoded letter leaving entity      
@@ -84,7 +91,7 @@ component plugboard
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
          
-      reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
+      reset_in :  in std_logic; --! reset_in signal, ('1' = reset_in)
       siga_in   :  in letter;   --! Letter coming into the entity
       sigb_in   :  in letter;   --! Letter coming into the entity
       siga_out  :  out letter;   --! Partially encoded letter leaving entity      
@@ -92,7 +99,8 @@ component plugboard
    );
 end component;
 
-type		wheel_interconnect is array(natural range num_wheels*2 downto 0) of letter; --! Wiring type to create an array used in the generate statement below
+--! Internal machine wiring signals
+type	wheel_interconnect is array(natural range num_wheels*2 downto 0) of letter; --! Wiring type to create an array used in the generate statement below
 signal 	wheel_inter_wiring: wheel_interconnect; --! Interconnect signals between wheels
 
 signal   plugboard_wheels, 
@@ -100,22 +108,17 @@ signal   plugboard_wheels,
          wheels_reflector, 
          reflectors_wheels: letter; --! Interconnect signals for rest of machine
 
+		 
+--! Delayed input signal definitions; Used to detect key presses
+signal 	sig_in_d1, sig_in_d2, sig_in_d3:	letter; --! Internal delayed input signals for use in keypress detection and to ensure turnover occurs before encoding
+signal  keypress: boolean; --! Boolean signal, will be single clock pulse long when a keypress is detected
+signal  sig_out_int:	letter; --! Internal output signal, used to ensure output only changes once the signal has propogated through the 
+signal  sig_out_counter: std_logic_vector(3 downto 0); --! Counter used to give enough clock cycles for signal to propogate through machine before output is updated
+
+--! Turn-over control
+
+
 begin
-
-wheel_num: 
-   for i in 0 to num_wheels generate
-      rotor: wheel 
-         port map 
-         (
-            clk_in   => clk_in,
-            reset_in => reset_in,
-            siga_in  => wheel_inter_wiring(i),
-            sigb_in  => ' ',
-            siga_out => wheel_inter_wiring(i+1),
-            sigb_out => open
-         );
-   end generate;
-
 
 
 stekerboard :plugboard
@@ -123,12 +126,28 @@ stekerboard :plugboard
    (
       clk_in   => clk_in,
       reset_in => reset_in,
-      siga_in  => a,
-      sigb_in  => a,
-      siga_out => open,
-      sigb_out => open
+      siga_in  => sig_in_d3, --! Input from keyboard
+      sigb_in  => wheels_plugboard, --! Input from wheels going towards bulbs
+      siga_out => plugboard_wheels, --! Output from plugboard going to wheels
+      sigb_out => sig_out_int --! Output into internal signal which update output of machine after pre-defined delay
    );
 
+wheels: 
+   for i in 0 to num_wheels generate
+      rotor: wheel 
+         port map 
+         (
+            clk_in   => clk_in,
+            reset_in => reset_in,
+			turnover => FALSE,
+			wheel_pos => open,
+			wheel_set => ' ',
+            siga_in  => wheel_inter_wiring(i),
+            sigb_in  => ' ',
+            siga_out => wheel_inter_wiring(i+1),
+            sigb_out => open
+         );
+   end generate;
 
 
 umkehrwalze:reflector
@@ -141,7 +160,76 @@ umkehrwalze:reflector
       siga_out => open,
       sigb_out => open
    );
+   
+ --! Creates delayed versions of the input signal for use in other processes   
+input_delay:process(clk_in, reset_in)
+begin
+	if (reset_in = '1') then 
+		sig_in_d1 <= ' ';
+		sig_in_d2 <= ' ';
+		sig_in_d2 <= ' ';
+	elsif rising_edge(clk_in) then
+		sig_in_d1 <= sig_in;
+		sig_in_d2 <= sig_in_d1;
+		sig_in_d3 <= sig_in_d2;
+	end if;
+end process;   
 
+--! Detects key press has occured based upond delayed signals
+keypress_det:process(clk_in, reset_in)
+begin
+	if (reset_in = '1') then 
+		keypress  <= FALSE;
+	elsif rising_edge(clk_in) then
+		if sig_in_d2 /= sig_in_d1 then
+			keypress <= TRUE;
+		else
+			keypress <= FALSE;
+		end if;     
+	end if;
+end process;   
+
+   
+--! Wheel Turnover control process
+--! This process sends a single clock cycle long pulse to each of the 4 wheels
+--! in order for them to advance at the correct time
+--! It uses the wheel values, the record of the wheel definition containing the turnover locations
+--! and a delayed input signal (to detect key presses
+--! N.B. On an Enigma machine the turnover happens on key pressing (i.e. BEFORE the letter is encoded)   
+turnover_ctrl:process(clk_in, reset_in)
+begin
+	if (reset_in = '1') then
+	
+
+	elsif rising_edge(clk_in) then
+		
+		--Turnover control goes here
+		
+		
+	end if;
+end process;   
+
+--! Controls the output signal
+--! Delays the updating of the output signal from the machine for a pre-determined number of clock cyles to allow signal to propagate through machine
+sig_out_ctrl:process(clk_in,reset_in)
+begin
+	if (reset_in='1') then
+		sig_out_counter <= (others => '1'); --! reset_in at max value, counting down makes length of counter irrelevant to rest of code
+	elsif rising_edge(clk_in) then
+		if sig_out_counter > 0 then
+			sig_out_counter <= sig_out_counter - 1;
+		end if;
+		
+		if keypress then
+			sig_out_counter <= (others => '1');
+		end if;
+	
+		if sig_out_counter = 0 then
+			sig_out <= sig_out_int;
+		end if;
+	
+	end if;
+end process;
 
 
 end rtl;

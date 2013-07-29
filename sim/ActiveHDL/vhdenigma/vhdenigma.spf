@@ -1,0 +1,13 @@
+<BaliSimProject version="1.3" path="../../sim/ActiveHDL" stage="0" language="-1" name="vhdenigma" simType="Active-HDL">
+    <Source worklib="work" path="../../rtl/letters_pak.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/debounce.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/reflector.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/plugboard.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/wheel.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/machine.vhd" type="VHDL" include="none"/>
+    <Source worklib="work" path="../../rtl/top_level.vhd" type="VHDL" include="none"/>
+    <SimLib value="pmi_work ovi_machxo2"/>
+    <GlbInc value=""/>
+    <Macro value=""/>
+    <TopModule instance="" language="VHDL" name="top_level"/>
+</BaliSimProject>
