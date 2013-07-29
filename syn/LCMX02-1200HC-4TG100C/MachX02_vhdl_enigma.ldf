@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="2.0" title="MachX02_vhdl_enigma" device="LCMXO2-1200HC-4TG100C" synthesis="lse" default_implementation="MachX02_vhdl_enigma">
+    <Options/>
+    <Implementation title="MachX02_vhdl_enigma" dir="MachX02_vhdl_enigma" description="MachX02_vhdl_enigma" default_strategy="Strategy1">
+        <Options def_top="top_level"/>
+        <Source name="../../rtl/debounce.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="debounce"/>
+        </Source>
+        <Source name="../../rtl/letters_pak.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/machine.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/plugboard.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/reflector.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/top_level.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="top_level"/>
+        </Source>
+        <Source name="../../rtl/wheel.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MachX02_vhdl_enigma.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="MachX02_vhdl_enigma1.sty"/>
+</BaliProject>
