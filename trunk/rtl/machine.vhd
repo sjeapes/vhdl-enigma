@@ -22,8 +22,8 @@
 
 --!   This is a structural file which wires the sub-components together
 --!   The wiring is Input -> Plugboard -> Wheels (low to high numbered)
---!				-> Reflector -> Wheels (high to low numbered) 
---! 				-> Plugboard -> Output
+--!               Reflector -> Wheels (high to low numbered) 
+--!               Plugboard -> Output
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -42,7 +42,6 @@ entity machine is
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
-         
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
       sig_in   :  in letter;
  
@@ -59,9 +58,11 @@ component wheel
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
-      sig_in   :  in letter;   --! Letter coming into the entity
-      sig_out  :  out letter   --! Partially encoded letter leaving entity
-	);
+      siga_in   :  in letter;   --! Letter coming into the entity
+      sigb_in   :  in letter;   --! Letter coming into the entity
+      siga_out  :  out letter;   --! Partially encoded letter leaving entity      
+      sigb_out  :  out letter   --! Partially encoded letter leaving entity
+   );
 end component;
 
 component reflector
@@ -70,8 +71,10 @@ component reflector
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
-      sig_in   :  in letter;   --! Letter coming into the entity
-      sig_out  :  out letter   --! Partially encoded letter leaving entity
+      siga_in   :  in letter;   --! Letter coming into the entity
+      sigb_in   :  in letter;   --! Letter coming into the entity
+      siga_out  :  out letter;   --! Partially encoded letter leaving entity      
+      sigb_out  :  out letter   --! Partially encoded letter leaving entity
    );
 end component;
 
@@ -82,9 +85,10 @@ component plugboard
          --! output signals will be synchroized to this clock domain
          
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
-      sig_in   :  in letter;
-      
-      sig_out  :  out letter
+      siga_in   :  in letter;   --! Letter coming into the entity
+      sigb_in   :  in letter;   --! Letter coming into the entity
+      siga_out  :  out letter;   --! Partially encoded letter leaving entity      
+      sigb_out  :  out letter   --! Partially encoded letter leaving entity
    );
 end component;
 
@@ -92,46 +96,51 @@ type		wheel_interconnect is array(natural range num_wheels*2 downto 0) of letter
 signal 	wheel_inter_wiring: wheel_interconnect; --! Interconnect signals between wheels
 
 signal   plugboard_wheels, 
-			wheels_plugboard, 
-			wheels_reflector, 
-			reflectors_wheels: letter; --! Interconnect signals for rest of machine
-		
+         wheels_plugboard, 
+         wheels_reflector, 
+         reflectors_wheels: letter; --! Interconnect signals for rest of machine
+
 begin
 
 wheel_num: 
-	for i in 0 to num_wheels generate
-		rotor: wheel 
-			port map 
-			(
-				clk_in   => clk_in,
-				reset_in => reset_in,
-				sig_in   => wheel_inter_wiring(i),
-				sig_out  => wheel_inter_wiring(i+1)
-			);
-	
-	end generate;
+   for i in 0 to num_wheels generate
+      rotor: wheel 
+         port map 
+         (
+            clk_in   => clk_in,
+            reset_in => reset_in,
+            siga_in  => wheel_inter_wiring(i),
+            sigb_in  => ' ',
+            siga_out => wheel_inter_wiring(i+1),
+            sigb_out => open
+         );
+   end generate;
 
 
 
-	stekerboard :plugboard
-		port map 
-		(
-			clk_in   => clk_in,
-			reset_in => reset_in,
-			sig_in   => a,
-			sig_out  => open
-		);
+stekerboard :plugboard
+   port map 
+   (
+      clk_in   => clk_in,
+      reset_in => reset_in,
+      siga_in  => a,
+      sigb_in  => a,
+      siga_out => open,
+      sigb_out => open
+   );
 
 
-	
-	umkehrwalze:reflector
-		port map 
-		(
-			clk_in   => clk_in,
-			reset_in => reset_in,
-			sig_in   => a,
-			sig_out  => open
-		);
+
+umkehrwalze:reflector
+   port map 
+   (
+      clk_in   => clk_in,
+      reset_in => reset_in,
+      siga_in  => a,
+      sigb_in  => a,
+      siga_out => open,
+      sigb_out => open
+   );
 
 
 

@@ -36,8 +36,10 @@ entity wheel is
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
-      sig_in   :  in letter;   --! Letter coming into the entity
-      sig_out  :  out letter   --! Partially encoded letter leaving entity
+      siga_in   :  in letter;   --! Letter coming into the entity
+      sigb_in   :  in letter;   --! Letter coming into the entity
+      siga_out  :  out letter;   --! Partially encoded letter leaving entity      
+      sigb_out  :  out letter   --! Partially encoded letter leaving entity
 	);
 
 end entity;
@@ -62,9 +64,11 @@ begin
 procWheel: process(clk_in,reset_in)
 begin
    if reset_in = '1' then
-      sig_out <= ' ';
+      siga_out <= ' ';
+      sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      sig_out <= (sig_in);
+      siga_out <= (siga_in);
+      sigb_out <= (sigb_in);
    end if;
 
 end process;

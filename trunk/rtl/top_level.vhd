@@ -45,6 +45,8 @@ end top_level;
 
 architecture rtl of top_level is
 
+signal reset: std_logic;
+
 component machine
 
    generic
@@ -70,6 +72,8 @@ end component;
 
 begin
 
+reset <= reset_n;	
+	
 enigma_machine : machine 
 	generic map
 	(
@@ -79,7 +83,7 @@ enigma_machine : machine
 	port map 
 	(
 		clk_in => clk,
-		reset_in => not reset_n,
+		reset_in => reset,
 		sig_in => sig_in,
 		sig_out => sig_out
 	);
