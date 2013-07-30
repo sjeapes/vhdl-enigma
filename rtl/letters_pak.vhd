@@ -29,9 +29,6 @@ package letters_pak is
 type letter is (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,' '); --! An enumerated type for letters of the alphabet, purely for readability
 type letter_mapping is array(letter) of letter; --! An array type used to map the incoming letter to an outgoing letter
 
-type wheel_variants is ('1','2','3','4','5','6','7','8',beta,gamma); --! The wheel types available
-type wheel_order is array(3 downto 0) of wheel_variants; --! The wheels fitted in the machine, highest wheel number to lowest, if only 3 wheels are used the MSB will be ignored
-
 end letters_pak;
 
 package body letters_pak is

@@ -31,6 +31,7 @@ use ieee.std_logic_arith.all;
 use IEEE.std_logic_unsigned.all;
 
 use work.letters_pak.all;
+use work.wheel_config_pak.all;
 
 
 entity machine is
@@ -54,6 +55,10 @@ end entity;
 architecture rtl of machine is
 
 component wheel
+	generic
+		(
+		variant: wheel_variants
+		);
    port 
    (
       clk_in   :  in std_logic; --! Clock input signal, 
@@ -78,10 +83,8 @@ component reflector
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! reset_in signal, ('1' = reset_in)
-      siga_in   :  in letter;   --! Letter coming into the entity
-      sigb_in   :  in letter;   --! Letter coming into the entity
-      siga_out  :  out letter;   --! Partially encoded letter leaving entity      
-      sigb_out  :  out letter   --! Partially encoded letter leaving entity
+      sig_in   :  in letter;   --! Letter coming into the entity
+      sig_out  :  out letter   --! Partially encoded letter leaving entity      
    );
 end component;
 
@@ -100,13 +103,14 @@ component plugboard
 end component;
 
 --! Internal machine wiring signals
-type	wheel_interconnect is array(natural range num_wheels*2 downto 0) of letter; --! Wiring type to create an array used in the generate statement below
-signal 	wheel_inter_wiring: wheel_interconnect; --! Interconnect signals between wheels
+type	wheel_interconnect is array(natural range num_wheels+1 downto 0) of letter; --! Wiring type to create an array used in the generate statement below
+signal 	wheel_inter_wiring_a,
+		wheel_inter_wiring_b: wheel_interconnect; --! Interconnect signals between wheels
 
 signal   plugboard_wheels, 
          wheels_plugboard, 
          wheels_reflector, 
-         reflectors_wheels: letter; --! Interconnect signals for rest of machine
+         reflector_wheels: letter; --! Interconnect signals for rest of machine
 
 		 
 --! Delayed input signal definitions; Used to detect key presses
@@ -132,9 +136,27 @@ stekerboard :plugboard
       sigb_out => sig_out_int --! Output into internal signal which update output of machine after pre-defined delay
    );
 
+--! Connections into and out of wheels
+wheel_conn: process(wheel_inter_wiring_a,
+					wheel_inter_wiring_b,
+					plugboard_wheels, 
+					wheels_plugboard, 
+					wheels_reflector, 
+					reflector_wheels)
+begin
+	wheel_inter_wiring_a(0) <= plugboard_wheels; --! Into the start of the wheels in the forward direction
+	wheels_reflector <= wheel_inter_wiring_a(num_wheels+1); --! Out of the wheels into the reflector in the forward direction
+	reflector_wheels <= wheel_inter_wiring_b(num_wheels+1); --! Into the wheels in the reverse direction
+	wheels_plugboard <= wheel_inter_wiring_b(0); --! Out of the wheels into the plugboard in the reverse direction	
+end process;
+
 wheels: 
    for i in 0 to num_wheels generate
       rotor: wheel 
+		   generic map
+		   (
+			  variant => wheel_order(i)
+		   )  
          port map 
          (
             clk_in   => clk_in,
@@ -142,10 +164,10 @@ wheels:
 			turnover => FALSE,
 			wheel_pos => open,
 			wheel_set => ' ',
-            siga_in  => wheel_inter_wiring(i),
-            sigb_in  => ' ',
-            siga_out => wheel_inter_wiring(i+1),
-            sigb_out => open
+            siga_in  => wheel_inter_wiring_a(i),
+            sigb_in  => wheel_inter_wiring_b(i),
+            siga_out => wheel_inter_wiring_a(i+1),
+            sigb_out => wheel_inter_wiring_b(i+1)
          );
    end generate;
 
@@ -155,11 +177,8 @@ umkehrwalze:reflector
    (
       clk_in   => clk_in,
       reset_in => reset_in,
-      siga_in  => a,
-      sigb_in  => a,
-      siga_out => open,
-      sigb_out => open
-   );
+      sig_in  => wheels_reflector,
+      sig_out => reflector_wheels   );
    
  --! Creates delayed versions of the input signal for use in other processes   
 input_delay:process(clk_in, reset_in)

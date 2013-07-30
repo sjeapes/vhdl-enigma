@@ -27,10 +27,14 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 use work.letters_pak.all;
+use work.wheel_config_pak.all;
 
 
 entity wheel is
-
+	generic
+		(
+		variant: wheel_variants := '1'
+		);
    port 
    (
       clk_in   :  in std_logic; --! Clock input signal, 
@@ -53,7 +57,8 @@ end entity;
 architecture rtl of wheel is
 
 
-type wheel_wiring is array(wheel_variants'left to wheel_variants'right) of letter_mapping;
+
+signal wheel_pos_int : letter;
 
 
 type wheel is
@@ -73,8 +78,8 @@ begin
       siga_out <= ' ';
       sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      siga_out <= (siga_in);
-      sigb_out <= (sigb_in);
+      siga_out <= encode_letter(siga_in, variant, wheel_pos_int);
+      sigb_out <= encode_letter(sigb_in, variant, wheel_pos_int);
    end if;
 
 end process;
@@ -82,14 +87,15 @@ end process;
 wheelPos: process(clk_in, reset_in)
 begin
 	if reset_in = '1' then
-	
-	
+		wheel_pos_int <= a;	
 	elsif rising_edge(clk_in) then
 	
 	
 	end if;
 
 end process;
+
+wheel_pos <= wheel_pos_int;
 
 
 end rtl;

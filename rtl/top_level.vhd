@@ -26,6 +26,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 use work.letters_pak.all;
+use work.wheel_config_pak.all;
 
 entity top_level is
    port
