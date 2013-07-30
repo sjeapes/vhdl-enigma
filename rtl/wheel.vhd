@@ -56,18 +56,7 @@ end entity;
 
 architecture rtl of wheel is
 
-
-
 signal wheel_pos_int : letter;
-
-
-type wheel is
-record
-   number : wheel_variants; --! The wheel variant
-   wiring : wheel_wiring; --! Wiring of the wheel
-   turnover : letter; --! Turnover position
-end record;
-
 
 begin
 
@@ -84,13 +73,23 @@ begin
 
 end process;
 
+--! Control of wheel position
+--! Setting of wheel position is via the wheel_set signal (wheels set when turnover = TRUE)
+--! Turnover = TRUE when wheel_set = ' ' advances the wheel by 1 position
 wheelPos: process(clk_in, reset_in)
 begin
 	if reset_in = '1' then
 		wheel_pos_int <= a;	
 	elsif rising_edge(clk_in) then
-	
-	
+		if turnover then	
+			if wheel_set = ' ' then	
+				wheel_pos_int <= wheel_pos_int;
+			else
+				wheel_pos_int <= wheel_set;
+			end if;
+		else
+			wheel_pos_int <= wheel_pos_int;
+		end if;	
 	end if;
 
 end process;
