@@ -146,7 +146,7 @@ wheel_conn: process(wheel_inter_wiring_a,
 begin
 	wheel_inter_wiring_a(0) <= plugboard_wheels; --! Into the start of the wheels in the forward direction
 	wheels_reflector <= wheel_inter_wiring_a(num_wheels+1); --! Out of the wheels into the reflector in the forward direction
-	reflector_wheels <= wheel_inter_wiring_b(num_wheels+1); --! Into the wheels in the reverse direction
+	wheel_inter_wiring_b(num_wheels+1) <= reflector_wheels; --! Into the wheels in the reverse direction
 	wheels_plugboard <= wheel_inter_wiring_b(0); --! Out of the wheels into the plugboard in the reverse direction	
 end process;
 
