@@ -29,10 +29,26 @@ package letters_pak is
 type letter is (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,' '); --! An enumerated type for letters of the alphabet, purely for readability
 type letter_mapping is array(letter) of letter; --! An array type used to map the incoming letter to an outgoing letter
 
+function increment(toincrement: letter) return letter;
+
+
 end letters_pak;
 
 package body letters_pak is
 
+type num_letters is array(integer range 0 to 26) of letter;
+constant letter_array: num_letters := (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,' ');
 
+type letters_num is array(letter) of integer;
+constant number_array: letters_num := (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26);
+
+function increment (toincrement: letter) return letter is
+begin
+   if toincrement = z then
+      return a;
+   else
+      return letter_array(number_array(toincrement));
+   end if;
+end increment;
 
 end letters_pak;

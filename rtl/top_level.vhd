@@ -23,7 +23,7 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
-use IEEE.std_logic_unsigned.all;
+use IEEE.numeric_std.all;
 
 use work.letters_pak.all;
 use work.wheel_config_pak.all;
@@ -36,10 +36,10 @@ entity top_level is
       reset_n     : in  std_logic; --! Reset input signal ('0' = Reset)
 
       -- Inout ports
-		sig_in		: in  letter; 
+      sig_in      : in  letter; 
 
       -- Output ports
-      sig_out		: out letter
+      sig_out     : out letter
 
    );
 end top_level;
@@ -74,20 +74,20 @@ end component;
 begin
 
 reset <= reset_n;	
-	
+   
 enigma_machine : machine 
-	generic map
-	(
-		num_wheels => 3,
-		wheel_order => ('4','3','2','1')
-	)
-	port map 
-	(
-		clk_in => clk,
-		reset_in => reset,
-		sig_in => sig_in,
-		sig_out => sig_out
-	);
+   generic map
+   (
+      num_wheels => 3,
+      wheel_order => ('4','3','2','1')
+   )
+   port map 
+   (
+      clk_in => clk,
+      reset_in => reset,
+      sig_in => sig_in,
+      sig_out => sig_out
+   );
 
 
 

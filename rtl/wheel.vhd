@@ -31,26 +31,26 @@ use work.wheel_config_pak.all;
 
 
 entity wheel is
-	generic
-		(
-		variant: wheel_variants := '1'
-		);
+   generic
+      (
+      variant: wheel_variants := '1'
+      );
    port 
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
       reset_in :  in std_logic; --! Reset signal, ('1' = Reset)
-	  
-	  --Wheel Atrributes and control
-	  turnover	:  in boolean; --! Input signal to tell the wheel to advance
-	  wheel_pos :  out letter; --! Output signal giving current wheel position
-	  wheel_set :  in letter;  --! Input used to set wheel position, when turnover = TRUE the wheel position will be set to the letter on this input signal, if this signal is set to ' ' it will be ignored
-	  
+  
+      --Wheel Atrributes and control
+      turnover  :  in boolean; --! Input signal to tell the wheel to advance
+      wheel_pos :  out letter; --! Output signal giving current wheel position
+      wheel_set :  in letter;  --! Input used to set wheel position, when turnover = TRUE the wheel position will be set to the letter on this input signal, if this signal is set to ' ' it will be ignored
+   
       siga_in   :  in letter;   --! Letter coming into the entity
       sigb_in   :  in letter;   --! Letter coming into the entity
       siga_out  :  out letter;   --! Partially encoded letter leaving entity      
       sigb_out  :  out letter   --! Partially encoded letter leaving entity
-	);
+   );
 
 end entity;
 
@@ -78,19 +78,19 @@ end process;
 --! Turnover = TRUE when wheel_set = ' ' advances the wheel by 1 position
 wheelPos: process(clk_in, reset_in)
 begin
-	if reset_in = '1' then
-		wheel_pos_int <= a;	
-	elsif rising_edge(clk_in) then
-		if turnover then	
-			if wheel_set = ' ' then	
-				wheel_pos_int <= wheel_pos_int;
-			else
-				wheel_pos_int <= wheel_set;
-			end if;
-		else
-			wheel_pos_int <= wheel_pos_int;
-		end if;	
-	end if;
+   if reset_in = '1' then
+      wheel_pos_int <= a;
+   elsif rising_edge(clk_in) then
+      if turnover then
+         if wheel_set = ' ' then
+            wheel_pos_int <= increment(wheel_pos_int);
+         else
+            wheel_pos_int <= wheel_set;
+         end if;
+      else
+         wheel_pos_int <= wheel_pos_int;
+      end if;
+   end if;
 
 end process;
 
