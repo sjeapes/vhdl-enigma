@@ -24,16 +24,14 @@ package wheel_config_pak is
 
 type wheel_variants is ('1','2','3','4','5','6','7','8',beta,gamma); --! The wheel types available
 type wheel_order is array(3 downto 0) of wheel_variants; --! The wheels fitted in the machine, highest wheel number to lowest, if only 3 wheels are used the MSB will be ignored
-
 type wheel_wiring is array(wheel_variants'left to wheel_variants'right) of letter_mapping;
 
 type wheel_def is 
-	record 
-		wiring : wheel_wiring;
-		turnover: letter;	end record;
-	
+   record 
+      wiring : wheel_wiring;
+      turnover: letter;   end record;
+   
 type wheel_set is array(wheel_variants) of wheel_def;
-
 
 function encode_letter(to_encode: letter; variant: wheel_variants; position:letter) return letter;
 
@@ -42,10 +40,9 @@ end wheel_config_pak;
 package body wheel_config_pak is
 
 
-
 function encode_letter(to_encode: letter; variant: wheel_variants; position:letter) return letter is
 begin
-	return a;
+   return a;
 end encode_letter;
 
 
