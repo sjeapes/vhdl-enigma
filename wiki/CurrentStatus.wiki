@@ -2,7 +2,14 @@
 #labels Featured
 
 = Current Status =
-Currently coding the basic machine.
-Empty templates created
+Basic unit structure created
+All entities connected together.
+Wheel code still needs to be completed
 
-Starting to fill in dummy sections to have the full structure up and working before starting to implement the wheels, plugboard inner workings
+Plugboard will not be usable in initial code
+
+
+= Next Steps =
+ * Complete wheel encoding
+ * Add wheel turn over control
+ * Create test-benches for units and whole machine
