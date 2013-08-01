@@ -67,8 +67,8 @@ begin
       siga_out <= ' ';
       sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      siga_out <= encode_letter(siga_in, variant, wheel_pos_int);
-      sigb_out <= encode_letter(sigb_in, variant, wheel_pos_int);
+      siga_out <= encode_letter(siga_in, variant);
+      sigb_out <= encode_letter(sigb_in, variant);
    end if;
 
 end process;
