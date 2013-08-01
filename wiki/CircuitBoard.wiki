@@ -13,6 +13,7 @@ Elements Required:
  * Power Supply Input
  * Local Regulation
  * Input Method
+ * Plugboard
  * CPLD
  * Output Method
  * Fixing/Tooling holes
@@ -30,6 +31,15 @@ Do not intend to supply PSU - adds too many complications with regions and safet
    * AA
  * External + Battery?
 
+== Local Regulation ==
+Strongly suggest Linear Dropout Regulators (LDO) to generate 3.3V.
+
+Input 5V |
+         | -> LED (direct power from 5V
+         |
+         | -> 3.3V |
+                   | -> CPLD
+
 
 == Input ==
 
@@ -38,6 +48,29 @@ Options
  * Switches
  * Capacitative Buttons
  * Serial Port
+
+== Plugboard ==
+Currently internal but.....
+
+*Proposed for H/W*
+A set of headers and wires to allow plugging of letter pairs.
+
+*Option 1*
+The signalling wouldn't directly route via these wires (the actual mechanism using in the enigma has a plate to wire direct across the letter if no plug is inserted).
+
+The wiring would be used during reset to configure the plugboard, a walking '1' through all 26 letters, all other letters would be '0' if no wires were present, if any letters are paired the CPLD detects by seeing what other letters are '1' during this test
+
+*Option 2*
+Use the actual wiring during operation.
+This might require some careful consideration but might work.
+
+The method would be similar to option '1'.
+Output the letter through the plugboard, anything which is 
+
+Due to the nature of the enigma machine the port will need to be bi-directional (the signal flows through the plugboard twice) but there won't be a conflict as the signal won't flow through the same pair of letters twice. However this would require two pairs of letters to be in use at the same time making the detection of correct pairing difficult.
+
+*Selection*
+Propose that option 1 is implemented to start with as it's technically less complex. After that the H/W and entity interface to the plugboard can remain the same if option 2 is implemented.
 
 
 == Output ==
