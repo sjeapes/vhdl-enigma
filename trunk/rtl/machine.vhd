@@ -119,6 +119,12 @@ signal  sig_out_int:	letter; --! Internal output signal, used to ensure output o
 signal  sig_out_counter: std_logic_vector(3 downto 0); --! Counter used to give enough clock cycles for signal to propogate through machine before output is updated
 
 --! Turn-over control
+type t_wheel_turnover is array(0 to 3) of boolean;
+signal turnover_wheel : t_wheel_turnover;
+
+
+type t_position is array(0 to 3) of letter; 
+signal wheel_pos : t_position;
 
 
 begin
@@ -160,8 +166,8 @@ wheels:
          (
             clk_in   => clk_in,
             reset_in => reset_in,
-            turnover => FALSE,
-            wheel_pos => open,
+            turnover => turnover_wheel(i),
+            wheel_pos => wheel_pos(i),
             wheel_set => ' ',
             siga_in  => wheel_inter_wiring_a(i),
             sigb_in  => wheel_inter_wiring_b(i),
@@ -217,13 +223,14 @@ end process;
 turnover_ctrl:process(clk_in, reset_in)
 begin
    if (reset_in = '1') then
-   
-
-   elsif rising_edge(clk_in) then
-      
-      --Turnover control goes here
-      
-      
+      turnover_wheel <= (others => 'FALSE');
+   elsif rising_edge(clk_in)then
+      -- Note: I'm skeptical this will handle multiple turnovers on one keypress properly. May need to adjust later
+      for i in (0 to 3) loop
+         if keypress then
+            turnover_wheel(i) <= turnover_wheel is_turnover_pos(wheel_pos(i), wheel_order(i));
+         end if;
+      end loop;
    end if;
 end process;   
 
