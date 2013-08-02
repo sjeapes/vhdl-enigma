@@ -69,6 +69,6 @@ StandAloneMachineTB/machine_TB_runtest.do=-1
 StandAloneMachineTB=1
 [HierarchyViewer]
 SortInfo=u
-HierarchyInformation=machine_tb|testbench_for_machine|1 
+HierarchyInformation=machine_tb|testbench_for_machine|1  
 ShowHide=ShowTopLevel
 Selected=

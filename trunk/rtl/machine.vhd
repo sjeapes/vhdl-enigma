@@ -151,7 +151,7 @@ wheel_conn: process(wheel_inter_wiring_a,
 begin
    wheel_inter_wiring_a(0) <= plugboard_wheels; --! Into the start of the wheels in the forward direction
    wheels_reflector <= wheel_inter_wiring_a(num_wheels+1); --! Out of the wheels into the reflector in the forward direction
-   --wheel_inter_wiring_b(num_wheels-1) <= reflector_wheels; --! Into the wheels in the reverse direction
+   wheel_inter_wiring_b(num_wheels+1) <= reflector_wheels; --! Into the wheels in the reverse direction
    wheels_plugboard <= wheel_inter_wiring_b(0); --! Out of the wheels into the plugboard in the reverse direction	
 end process;
 
@@ -170,9 +170,9 @@ wheels:
             wheel_pos => wheel_pos(i),
             wheel_set => ' ',
             siga_in  => wheel_inter_wiring_a(i),
-            sigb_in  => wheel_inter_wiring_b(i),
+            sigb_in  => wheel_inter_wiring_b(i+1),
             siga_out => wheel_inter_wiring_a(i+1),
-            sigb_out => wheel_inter_wiring_b(i+1)
+            sigb_out => wheel_inter_wiring_b(i)
          );
    end generate;
 

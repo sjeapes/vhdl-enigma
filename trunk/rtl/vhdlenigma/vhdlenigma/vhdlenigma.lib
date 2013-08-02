@@ -1,107 +1,107 @@
-timestamp=1375450249630
+timestamp=1375451913727
 
 [letters_pak]
-BinI32/letters_pak=3*150734
-E=1*595852
+BinI32/letters_pak=3*160148
+E=1*633542
 I=0*1485
 I/letters_pak=0*2512
 M=3|0|va7|1375445551081|./../../letters_pak.vhd|0*933*0x2132455be08b923cc710f2f5577e58508cdb4797|0*1400*0xab32bc1a2daf049573e14469f634e0e6
-M/letters_pak=4|0|va7|1375450239508|./../../letters_pak.vhd|0*1525*0x1109d71af0de744afb3692d595c33ee7a22d2164|0*2413*0xb33770ff1c10522f9491560174ac8e6c
+M/letters_pak=4|0|va7|1375451606323|./../../letters_pak.vhd|0*1525*0x1109d71af0de744afb3692d595c33ee7a22d2164|0*2413*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../letters_pak.vhd|27
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [machine]
-A/rtl=21|./../../machine.vhd|55|1*621723
-BinI32/rtl=3*157183
+A/rtl=21|./../../machine.vhd|55|1*671260
+BinI32/rtl=3*169673
 I=0*30585
-I/rtl=0*52595
+I/rtl=0*60965
 M=11|0|va7|1375448749038|./../../machine.vhd|0*30064*0x542793057b104f551057985b899484defa1df34e|0*30508*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=21|0|va7|1375450248847|./../../machine.vhd|0*49248*0xef70e5ff739badf5d954012e70e0f7da70246e29|0*52511*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=21|0|va7|1375451912757|./../../machine.vhd|0*57557*0xd7f513871a45b7c71084c833d98834c4b39b1ddd|0*60881*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../machine.vhd|37
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [machine_tb]
-A/tb_architecture=A/TB_ARCHITECTURE 21|./../src/StandAloneMachineTB/machine_TB.vhd|19|1*629809
-BinI32/tb_architecture=3*159558
+A/tb_architecture=A/TB_ARCHITECTURE 21|./../src/StandAloneMachineTB/machine_TB.vhd|19|1*679360
+BinI32/tb_architecture=3*172106
 I=0*29386
-I/tb_architecture=I/TB_ARCHITECTURE 0*57132
+I/tb_architecture=I/TB_ARCHITECTURE 0*62464
 M=11|0|va7|1375448740236|./../src/StandAloneMachineTB/machine_TB.vhd|0*28871*0xb40bc6be1cecaee1d84bede1df7be1537426d124|0*29282*0xab32bc1a2daf049573e14469f634e0e6
-M/tb_architecture=M/TB_ARCHITECTURE 21|0|va7|1375450249485|./../src/StandAloneMachineTB/machine_TB.vhd|0*56158*0xa57e4fa84a47253a8c4e8e3bb3d51508661bfb70|0*57009*0xb33770ff1c10522f9491560174ac8e6c
+M/tb_architecture=M/TB_ARCHITECTURE 21|0|va7|1375451913527|./../src/StandAloneMachineTB/machine_TB.vhd|0*61485*0xe6492722b5c45b84b5f08265b80520457b1c79d0|0*62341*0xb33770ff1c10522f9491560174ac8e6c
 R=./../src/StandAloneMachineTB/machine_TB.vhd|11
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/tb_architecture=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [plugboard]
-A/rtl=21|./../../plugboard.vhd|46|1*605845
-BinI32/rtl=3*153546
+A/rtl=21|./../../plugboard.vhd|46|1*643549
+BinI32/rtl=3*163010
 I=0*3234
 I/rtl=0*3791
 M=11|0|va7|1375445552213|./../../plugboard.vhd|0*2827*0x78e57a8d135f1f8689df849ae5aca108fc7cc28d|0*3153*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=21|0|va7|1375450239879|./../../plugboard.vhd|0*3396*0x9a788e793bbbac55a9cc16a786bc145611d956e5|0*3703*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=21|0|va7|1375451606759|./../../plugboard.vhd|0*3396*0x9a788e793bbbac55a9cc16a786bc145611d956e5|0*3703*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../plugboard.vhd|31
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [reflector]
-A/rtl=21|./../../reflector.vhd|46|1*607292
-BinI32/rtl=3*154158
+A/rtl=21|./../../reflector.vhd|46|1*644996
+BinI32/rtl=3*163622
 I=0*4534
 I/rtl=0*5205
 M=11|0|va7|1375445552834|./../../reflector.vhd|0*4174*0x79a0bea2e671eabb9ece4581235c177de593cd03|0*4453*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=21|0|va7|1375450240023|./../../reflector.vhd|0*4696*0x98cb6139b565ee392630cec84bd60c1323410571|0*5117*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=21|0|va7|1375451606897|./../../reflector.vhd|0*4696*0x98cb6139b565ee392630cec84bd60c1323410571|0*5117*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../reflector.vhd|33
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [testbench_for_machine]
 Configures=machine_tb.TB_ARCHITECTURE
-E=1*633034
+E=1*682579
 I=0*55738
-M=2|0|va7|1375450249493|./../src/StandAloneMachineTB/machine_TB.vhd|0*55328*0xf8e3f1e80a72baafa9b9e5b395abb79e4c97b7c0|0*55610*0xb33770ff1c10522f9491560174ac8e6c
+M=2|0|va7|1375451913539|./../src/StandAloneMachineTB/machine_TB.vhd|0*55328*0xf8e3f1e80a72baafa9b9e5b395abb79e4c97b7c0|0*55610*0xb33770ff1c10522f9491560174ac8e6c
 R=./../src/StandAloneMachineTB/machine_TB.vhd|87
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [top_level]
-A/rtl=21|./../../top_level.vhd|47|1*608958
-BinI32/rtl=3*154827
+A/rtl=21|./../../top_level.vhd|47|1*646662
+BinI32/rtl=3*164291
 I=0*10082
 I/rtl=0*32097
 M=11|0|va7|1375448749514|./../../top_level.vhd|0*9659*0x09c95782a3b236b36a39648d61b10a2b0806f94a|0*10001*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=21|0|va7|1375450240180|./../../top_level.vhd|0*31457*0xd3ec1b35c587bd4315130c62919642266631e645|0*32009*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=21|0|va7|1375451607039|./../../top_level.vhd|0*31457*0xd3ec1b35c587bd4315130c62919642266631e645|0*32009*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../top_level.vhd|31
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [wheel]
-A/rtl=21|./../../wheel.vhd|57|1*611721
-BinI32/rtl=3*155083
+A/rtl=21|./../../wheel.vhd|57|1*649425
+BinI32/rtl=3*164547
 I=0*8242
 I/rtl=0*37248
 M=11|0|va7|1375448749527|./../../wheel.vhd|0*7711*0xaf766f267504a3423e7bd831378a04aa913777e3|0*8169*0xab32bc1a2daf049573e14469f634e0e6
-M/rtl=21|0|va7|1375450240324|./../../wheel.vhd|0*36490*0x1623851d10e552542622d2b4b4811518846a5d01|0*37168*0xb33770ff1c10522f9491560174ac8e6c
+M/rtl=21|0|va7|1375451607167|./../../wheel.vhd|0*36490*0x1623851d10e552542622d2b4b4811518846a5d01|0*37168*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../wheel.vhd|33
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 Version/rtl=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [wheel_config_pak]
-BinI32/wheel_config_pak=3*156130
-E=1*614181
+BinI32/wheel_config_pak=3*165597
+E=1*651885
 I=0*26080
 I/wheel_config_pak=0*28550
 M=3|0|va7|1375448740083|./../../wheel_config_pak.vhd|0*25291*0x961aa5991d296ef257fdb197c36466034b2222ec|0*25985*0xab32bc1a2daf049573e14469f634e0e6
-M/wheel_config_pak=4|0|va7|1375450240478|./../../wheel_config_pak.vhd|0*26184*0x62d1b1882f3ff430ecd146834ccd1322dc1e9cdb|0*28436*0xb33770ff1c10522f9491560174ac8e6c
+M/wheel_config_pak=4|0|va7|1375451607320|./../../wheel_config_pak.vhd|0*26184*0x62d1b1882f3ff430ecd146834ccd1322dc1e9cdb|0*28436*0xb33770ff1c10522f9491560174ac8e6c
 R=./../../wheel_config_pak.vhd|23
 Version=9.2.2499.4581  (Windows)|00000003789cd3f5370600015b00b0
 
 [~A]
-ModifyID=1135
+ModifyID=1206
 Version=73
 
 [~MFT]
-0=196|0vhdlenigma.mgf|57132|35353
-1=420|1vhdlenigma.mgf|633034|607671
-3=391|3vhdlenigma.mgf|159558|153707
+0=208|0vhdlenigma.mgf|62464|40619
+1=450|1vhdlenigma.mgf|682579|657208
+3=415|3vhdlenigma.mgf|172106|166194
 
 [~U]
 letters_pak=3|0*0|0*208
