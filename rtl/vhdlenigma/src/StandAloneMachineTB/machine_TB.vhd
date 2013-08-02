@@ -64,7 +64,7 @@ end process;
 
 reset_in <= '0', '1' after 50 ns; 
 
-process
+tb: process
 begin 
 	sig_in <= a;
 	wait for 200 ns; --! 200ns wait to let everything settle down during/after reset
