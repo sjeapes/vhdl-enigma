@@ -1,0 +1,74 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=3
+Current Config=compile
+
+[Configurations]
+compile=vhdlenigma
+
+[Library]
+vhdlenigma=.\vhdlenigma\vhdlenigma.lib
+
+[Settings]
+AccessRead=0
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=1
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+FLOWTOOLS=ONLY_IMPL
+ON_SERVERFARM_SYNTH=0
+ON_SERVERFARM_IMPL=0
+ON_SERVERFARM_SIM=0
+DVM_DISPLAY=NO
+FAMILY=<none>
+fileopenfolder=C:\svn\vhdl-enigma\rtl
+
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+
+[LocalVhdlSets]
+CompileWithDebug=0
+
+[$LibMap$]
+vhdlenigma=.
+
+[IMPLEMENTATION]
+UCF=
+
+[Files]
+/..\..\letters_pak.vhd=-1
+/..\..\machine.vhd=-1
+/..\..\plugboard.vhd=-1
+/..\..\reflector.vhd=-1
+/..\..\top_level.vhd=-1
+/..\..\wheel.vhd=-1
+/..\..\wheel_config_pak.vhd=-1
+StandAloneMachineTB/machine_TB.vhd=-1
+StandAloneMachineTB/machine_TB_runtest.do=-1
+
+[Files.Data]
+.\..\letters_pak.vhd=VHDL Source Code
+.\..\machine.vhd=VHDL Source Code
+.\..\plugboard.vhd=VHDL Source Code
+.\..\reflector.vhd=VHDL Source Code
+.\..\top_level.vhd=VHDL Source Code
+.\..\wheel.vhd=VHDL Source Code
+.\..\wheel_config_pak.vhd=VHDL Source Code
+.\src\StandAloneMachineTB\machine_TB.vhd=VHDL Test Bench
+.\src\StandAloneMachineTB\machine_TB_runtest.do=Macro
+
+[Groups]
+StandAloneMachineTB=1
+[HierarchyViewer]
+SortInfo=u
+HierarchyInformation=machine_tb|testbench_for_machine|1 
+ShowHide=ShowTopLevel
+Selected=

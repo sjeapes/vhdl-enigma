@@ -53,7 +53,7 @@ component machine
    generic
    (
       num_wheels: integer := 3; --! The number of wheels in the machine, only 3 or 4 are valid
-      wheel_order: wheel_order := ('1','2','3','4') --! The wheels fitted in the machine, highest wheel number to lowest
+      wheel_order: t_wheel_order := ('4','3','2','1') --! The wheels fitted in the machine, highest wheel number to lowest
    );
 
    port

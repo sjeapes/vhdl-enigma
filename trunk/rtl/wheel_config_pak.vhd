@@ -23,19 +23,20 @@ use work.letters_pak.all;
 package wheel_config_pak is
 
 type wheel_variants is ('1','2','3','4','5','6','7','8',beta,gamma); --! The wheel types available
-type wheel_order is array(3 downto 0) of wheel_variants; --! The wheels fitted in the machine, highest wheel number to lowest, if only 3 wheels are used the MSB will be ignored
+type t_wheel_order is array(3 downto 0) of wheel_variants; --! The wheels fitted in the machine, highest wheel number to lowest, if only 3 wheels are used the MSB will be ignored
 --type wheel_wiring is array(wheel_variants'left to wheel_variants'right) of letter_mapping;
 type t_turnover is array (1 downto 0) of letter;
 
 type wheel_def is 
    record 
       wiring : letter_mapping;
-      turnover: t_turnover;   end record;
+      turnover: t_turnover;   end record;
    
 type t_wheel_set is array(wheel_variants) of wheel_def;
 
 function is_turnover_pos(wheel_pos: letter; variant: wheel_variants) return boolean;
 function encode_letter(to_encode: letter; variant: wheel_variants) return letter;
+function wheel_entry_exit(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter;
 
 end wheel_config_pak;
 
@@ -56,25 +57,25 @@ package body wheel_config_pak is
 --! Gamma rotor	F	S	O	K	A	N	U	E	R	H	M	B	T	I	Y	C	W	L	Q	P	Z	X	V	G	J	D
 constant wheel_data: t_wheel_set :=  (
       '1' => (turnover => (' ',r),
-              wiring => (i,e,k,m,f,l,g,d,q,v,z,n,t,o,w,y,h,x,u,s,p,a,i,b,r,c,j)),
+              wiring => (e,k,m,f,l,g,d,q,v,z,n,t,o,w,y,h,x,u,s,p,a,i,b,r,c,j,' ')),
       '2' => (turnover => (' ',f),
-              wiring => (a,j,d,k,s,i,r,u,x,b,l,h,w,t,m,c,q,g,z,n,p,y,f,v,o,r)),
+              wiring => (a,j,d,k,s,i,r,u,x,b,l,h,w,t,m,c,q,g,z,n,p,y,f,v,o,r,' ')),
       '3' => (turnover => (' ',w),
-              wiring => (b,d,f,h,j,l,c,p,r,t,x,v,z,n,y,e,i,w,g,a,k,m,u,s,q,o)),      
+              wiring => (b,d,f,h,j,l,c,p,r,t,x,v,z,n,y,e,i,w,g,a,k,m,u,s,q,o,' ')),      
       '4' => (turnover => (' ',k),
-              wiring => (e,s,o,v,p,z,j,a,y,q,u,i,r,h,x,l,n,f,t,g,k,d,c,m,w,b)),      
+              wiring => (e,s,o,v,p,z,j,a,y,q,u,i,r,h,x,l,n,f,t,g,k,d,c,m,w,b,' ')),      
       '5' => (turnover => (' ',a),
-              wiring => (v,z,b,r,g,i,t,y,u,p,s,d,n,h,l,x,a,w,m,j,q,o,f,e,c,k)),      
+              wiring => (v,z,b,r,g,i,t,y,u,p,s,d,n,h,l,x,a,w,m,j,q,o,f,e,c,k,' ')),      
       '6' => (turnover => (a,n),
-              wiring => (j,p,g,v,o,u,m,f,y,q,b,e,n,h,z,r,d,k,a,s,x,l,i,c,t,w)),
+              wiring => (j,p,g,v,o,u,m,f,y,q,b,e,n,h,z,r,d,k,a,s,x,l,i,c,t,w,' ')),
       '7' => (turnover => (a,n),
-              wiring => (n,z,j,h,g,r,c,x,m,y,s,w,b,o,u,f,a,i,v,l,p,e,k,q,d,t)),        
+              wiring => (n,z,j,h,g,r,c,x,m,y,s,w,b,o,u,f,a,i,v,l,p,e,k,q,d,t,' ')),        
       '8' => (turnover => (a,n),
-              wiring => (f,k,q,h,t,l,x,o,c,b,j,s,p,d,z,r,a,m,e,w,n,i,u,y,g,v)),  
+              wiring => (f,k,q,h,t,l,x,o,c,b,j,s,p,d,z,r,a,m,e,w,n,i,u,y,g,v,' ')),  
       beta => (turnover => (' ',' '), --! Beta wheel can only be used in 4th position so doesn't have a turnover position
-              wiring => (l,e,y,j,v,c,n,i,x,w,p,b,q,m,d,r,t,a,k,z,g,f,u,h,o,s)),
+              wiring => (l,e,y,j,v,c,n,i,x,w,p,b,q,m,d,r,t,a,k,z,g,f,u,h,o,s,' ')),
       gamma => (turnover => (' ',' '), --! Gamma wheel can only be used in 4th position so doesn't have a turnover position
-              wiring => (f,s,o,k,a,n,u,e,r,h,m,b,t,i,y,c,w,l,q,p,z,x,v,g,j,d))
+              wiring => (f,s,o,k,a,n,u,e,r,h,m,b,t,i,y,c,w,l,q,p,z,x,v,g,j,d,' '))
   );
 
 --! is_turnover_pos takes Current Wheel Position and Wheel Type
@@ -94,5 +95,19 @@ begin
    return wheel_data(variant).wiring(to_encode);
 end encode_letter;
 
+
+--! wheel_entry_exit transposes the letter from the entry of the wheel mechanism into the wiring based upon the wheel position
+--! entry: boolean - when true the function transposes from a letter into the wheel, when false it transposes from the wheel wiring out of the wheel
+--! wheel_pos: the wheel position
+--! encoded_letter: the letter to be transposed (either the letter to go into the wheel or the exit of the wiring to produce the letter to go out of the wheel)
+function wheel_entry_exit(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter is
+begin
+   if entry then
+--! For entry transposition take entry letter, convert to number and then add together convert the remainder (after modulo 26 conversion) back to a letter
+      return encoded_letter;
+   else
+      return encoded_letter;
+   end if;   
+end wheel_entry_exit;
 
 end wheel_config_pak;
