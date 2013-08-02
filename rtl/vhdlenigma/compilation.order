@@ -1,0 +1,8 @@
+.\..\letters_pak.vhd
+.\..\machine.vhd
+.\..\plugboard.vhd
+.\..\reflector.vhd
+.\..\top_level.vhd
+.\..\wheel.vhd
+.\..\wheel_config_pak.vhd
+.\src\StandAloneMachineTB\machine_TB.vhd

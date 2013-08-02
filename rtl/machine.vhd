@@ -37,7 +37,7 @@ use work.wheel_config_pak.all;
 entity machine is
    generic(
       num_wheels: integer := 3; --! The number of wheels in the machine, only 3 or 4 are valid
-      wheel_order: wheel_order := ('1','2','3','4') --! The wheels fitted in the machine, highest wheel number to lowest
+      wheel_order: t_wheel_order := ('4','3','2','1') --! The wheels fitted in the machine, highest wheel number to lowest
    );
 
    port 
@@ -151,12 +151,12 @@ wheel_conn: process(wheel_inter_wiring_a,
 begin
    wheel_inter_wiring_a(0) <= plugboard_wheels; --! Into the start of the wheels in the forward direction
    wheels_reflector <= wheel_inter_wiring_a(num_wheels+1); --! Out of the wheels into the reflector in the forward direction
-   wheel_inter_wiring_b(num_wheels+1) <= reflector_wheels; --! Into the wheels in the reverse direction
+   --wheel_inter_wiring_b(num_wheels-1) <= reflector_wheels; --! Into the wheels in the reverse direction
    wheels_plugboard <= wheel_inter_wiring_b(0); --! Out of the wheels into the plugboard in the reverse direction	
 end process;
 
 wheels: 
-   for i in 0 to num_wheels generate
+   for i in 0 to num_wheels-1 generate
       rotor: wheel 
          generic map
          (
@@ -183,7 +183,7 @@ umkehrwalze:reflector
       clk_in   => clk_in,
       reset_in => reset_in,
       sig_in  => wheels_reflector,
-      sig_out => reflector_wheels   );
+      sig_out => reflector_wheels   );
    
  --! Creates delayed versions of the input signal for use in other processes   
 input_delay:process(clk_in, reset_in)
@@ -223,12 +223,13 @@ end process;
 turnover_ctrl:process(clk_in, reset_in)
 begin
    if (reset_in = '1') then
-      turnover_wheel <= (others => 'FALSE');
+      turnover_wheel <= (others => FALSE);
    elsif rising_edge(clk_in)then
       -- Note: I'm skeptical this will handle multiple turnovers on one keypress properly. May need to adjust later
-      for i in (0 to 3) loop
+      turnover_wheel(0) <= keypress;
+      for i in 1 to 3 loop
          if keypress then
-            turnover_wheel(i) <= turnover_wheel is_turnover_pos(wheel_pos(i), wheel_order(i));
+            turnover_wheel(i) <= is_turnover_pos(wheel_pos(i-1), wheel_order(i-1));
          end if;
       end loop;
    end if;

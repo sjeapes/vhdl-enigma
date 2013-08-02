@@ -31,6 +31,8 @@ type letter_mapping is array(letter) of letter; --! An array type used to map th
 
 function increment(toincrement: letter) return letter;
 
+function number_to_letter(num_to_convert: integer range 0 to 26) return letter;
+function letter_to_number(letter_to_convert: letter) return integer;
 
 end letters_pak;
 
@@ -50,5 +52,18 @@ begin
       return letter_array(number_array(toincrement));
    end if;
 end increment;
+
+function number_to_letter(num_to_convert: integer range 0 to 26) return letter is
+begin 
+   return letter_array(num_to_convert);
+end number_to_letter;
+
+
+function letter_to_number(letter_to_convert: letter) return integer is
+begin
+   return number_array(letter_to_convert);
+end letter_to_number;
+
+
 
 end letters_pak;
