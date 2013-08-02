@@ -125,4 +125,7 @@ Seemingly there is no free S/W available for the Cool-runner devices. This rules
 
 ===Final Selection===
 
-Lattice Mach-X02 with a view to migrate to the ice40 parts if resources permit
+Lattice Mach-X02 used for development due to use of boards
+
+Intended final part will be the ice40 1280LUT, QFN84 £3.57 each for QTYs of 10 or greater
+http://uk.rs-online.com/web/p/fpgas/7720098/
