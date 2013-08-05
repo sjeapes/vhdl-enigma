@@ -1,15 +1,4 @@
 #summary Current Status and Next Planned Steps
-#labels Featured
+#labels Deprecated
 
-= Current Status =
-Basic unit structure created
-All entities connected together.
-Wheel code still needs to be completed
-
-Plugboard will not be usable in initial code
-
-
-= Next Steps =
- * Complete wheel encoding
- * Add wheel turn over control
- * Create test-benches for units and whole machine
+Status updates will be through the [http://vhdlenigma.wordpress.com/category/status/ blog]
