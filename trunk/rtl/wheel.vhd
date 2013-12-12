@@ -60,7 +60,6 @@ signal wheel_pos_int : letter;
 
 begin
 
---! Dummy process for the moment to send data direct through wheel
 wheelEncode: process(clk_in,reset_in)
 begin
    if reset_in = '1' then

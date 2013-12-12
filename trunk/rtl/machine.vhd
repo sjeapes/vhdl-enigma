@@ -116,7 +116,7 @@ signal   plugboard_wheels,
 signal  sig_in_d1, sig_in_d2, sig_in_d3:	letter; --! Internal delayed input signals for use in keypress detection and to ensure turnover occurs before encoding
 signal  keypress: boolean; --! Boolean signal, will be single clock pulse long when a keypress is detected
 signal  sig_out_int:	letter; --! Internal output signal, used to ensure output only changes once the signal has propogated through the 
-signal  sig_out_counter: std_logic_vector(3 downto 0); --! Counter used to give enough clock cycles for signal to propogate through machine before output is updated
+signal  sig_out_counter: std_logic_vector(2 downto 0); --! Counter used to give enough clock cycles for signal to propogate through machine before output is updated
 
 --! Turn-over control
 type t_wheel_turnover is array(0 to 3) of boolean;
@@ -150,8 +150,8 @@ wheel_conn: process(wheel_inter_wiring_a,
                reflector_wheels)
 begin
    wheel_inter_wiring_a(0) <= plugboard_wheels; --! Into the start of the wheels in the forward direction
-   wheels_reflector <= wheel_inter_wiring_a(num_wheels+1); --! Out of the wheels into the reflector in the forward direction
-   wheel_inter_wiring_b(num_wheels+1) <= reflector_wheels; --! Into the wheels in the reverse direction
+   wheels_reflector <= wheel_inter_wiring_a(num_wheels); --! Out of the wheels into the reflector in the forward direction
+   wheel_inter_wiring_b(num_wheels) <= reflector_wheels; --! Into the wheels in the reverse direction
    wheels_plugboard <= wheel_inter_wiring_b(0); --! Out of the wheels into the plugboard in the reverse direction	
 end process;
 
@@ -252,6 +252,7 @@ begin
    
       if sig_out_counter = 0 then
          sig_out <= sig_out_int;
+
       end if;
    
    end if;

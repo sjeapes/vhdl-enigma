@@ -86,14 +86,14 @@ process
     test_running <= TRUE;  
     
     
-    wait for 100 ns;
+    wait for 2100 ns;
     
     sig_tb <= a;
-    wait for 100 ns;
+    wait for 1500 ns;
     sig_tb <= ' ';
-    wait for 50 ns;
+    wait for 250 ns;
     sig_tb <= a;
-    
+    wait for 1500 ns;
     
     
     
