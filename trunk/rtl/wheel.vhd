@@ -66,8 +66,8 @@ begin
       siga_out <= ' ';
       sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      siga_out <= encode_letter(siga_in, variant);
-      sigb_out <= encode_letter(sigb_in, variant);
+      siga_out <= encode_letter(siga_in, variant, TRUE);
+      sigb_out <= encode_letter(sigb_in, variant, FALSE);
    end if;
 
 end process;
@@ -75,20 +75,18 @@ end process;
 --! Control of wheel position
 --! Setting of wheel position is via the wheel_set signal (wheels set when turnover = TRUE)
 --! Turnover = TRUE when wheel_set = ' ' advances the wheel by 1 position
-wheelPos: process(clk_in, reset_in)
+wheelPos: process(reset_in,clk_in)
 begin
    if reset_in = '1' then
       wheel_pos_int <= a;
    elsif rising_edge(clk_in) then
-      if turnover then
-         if wheel_set = ' ' then
-            wheel_pos_int <= increment(wheel_pos_int);
-         else
-            wheel_pos_int <= wheel_set;
-         end if;
-      else
-         wheel_pos_int <= wheel_pos_int;
-      end if;
+		if turnover then
+			if wheel_set = ' ' then
+				wheel_pos_int <= increment(wheel_pos_int);
+			else
+				wheel_pos_int <= wheel_set;
+			end if;
+		end if;
    end if;
 
 end process;

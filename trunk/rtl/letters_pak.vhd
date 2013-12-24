@@ -44,13 +44,18 @@ constant letter_array: num_letters := (a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u
 type letters_num is array(letter) of integer;
 constant number_array: letters_num := (0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26);
 
-function increment (toincrement: letter) return letter is
+function increment(toincrement: letter) return letter is
+variable incremented : letter := ' ';
 begin
    if toincrement = z then
-      return a;
+      incremented := a;
+   elsif toincrement = ' ' then
+	  incremented := ' ';
    else
-      return letter_array(number_array(toincrement));
+      incremented := letter_array(number_array(toincrement)+1);
    end if;
+   
+   return incremented;
 end increment;
 
 function number_to_letter(num_to_convert: integer range 0 to 26) return letter is

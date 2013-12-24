@@ -225,7 +225,6 @@ begin
    if (reset_in = '1') then
       turnover_wheel <= (others => FALSE);
    elsif rising_edge(clk_in)then
-      -- Note: I'm skeptical this will handle multiple turnovers on one keypress properly. May need to adjust later
       turnover_wheel(0) <= keypress;
       for i in 1 to 3 loop
          if keypress then

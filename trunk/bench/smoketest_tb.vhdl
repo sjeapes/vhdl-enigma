@@ -86,24 +86,17 @@ process
     test_running <= TRUE;  
     
     
-    wait for 2100 ns;
-    
-    sig_tb <= a;
-    wait for 1500 ns;
-    sig_tb <= ' ';
-    wait for 250 ns;
-    sig_tb <= a;
-    wait for 1500 ns;
+    wait for 5000 ns;
     
     
     
     
-    
-    
-    
-    
-    
-    
+    for i in 0 to 10 loop
+		sig_tb <= a;
+		wait for 2000 ns;
+		sig_tb <= ' ';
+		wait for 2000 ns;
+	end loop;
     
     
     
@@ -112,7 +105,7 @@ process
     
     assert test_running
     report "End of Testbench; No errors = Good"
-    severity error;
+    severity failure;
     
   end process;
 
