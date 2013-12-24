@@ -4,8 +4,8 @@ K3
 cModel Technology
 d/home/sjeapes
 Ebench
-Z0 w1386800043
-Z1 DPx4 work 16 wheel_config_pak 0 22 T9VF=BJj4CCSdePdS?R`K3
+Z0 w1387904710
+Z1 DPx4 work 16 wheel_config_pak 0 22 ogo_>D;8F9fH@=T^^kESV0
 Z2 DPx4 work 11 letters_pak 0 22 eK[aaEc5IHbOQR`TeE]FR0
 Z3 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
 Z4 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
@@ -22,7 +22,7 @@ VoQ1Rg@oTOVOd?5FgQU6Ve0
 Z11 OV;C;10.1d;51
 32
 !i10b 1
-Z12 !s108 1386800053.969012
+Z12 !s108 1387917828.699720
 Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/bench/smoketest_tb.vhdl|
 Z14 !s107 /home/sjeapes/svn/bench/smoketest_tb.vhdl|
 Z15 o-work work -2002 -explicit -O0
@@ -38,8 +38,8 @@ R7
 Z17 DEx4 work 5 bench 0 22 oQ1Rg@oTOVOd?5FgQU6Ve0
 l69
 L45
-Z18 VSXXDYCfNiYk:MaC9Adh1O0
-Z19 !s100 FdadGCCZ@a5mfoEo=EHYl1
+Z18 V2NhmEPXd32I7[oIAcjl4g1
+Z19 !s100 PW]zFfP3^8:=W0j:fkMX60
 R11
 32
 !i10b 1
@@ -49,7 +49,7 @@ R14
 R15
 R16
 Pletters_pak
-Z20 w1380661338
+Z20 w1387894699
 R8
 Z21 8/home/sjeapes/svn/rtl/letters_pak.vhd
 Z22 F/home/sjeapes/svn/rtl/letters_pak.vhd
@@ -59,7 +59,7 @@ VeK[aaEc5IHbOQR`TeE]FR0
 R11
 32
 b1
-Z23 !s108 1386800053.706851
+Z23 !s108 1387917828.429590
 Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/letters_pak.vhd|
 Z25 !s107 /home/sjeapes/svn/rtl/letters_pak.vhd|
 R15
@@ -70,7 +70,7 @@ Bbody
 R2
 l0
 L39
-VBdX_U>JV4dS>`F;i^k^UU1
+V]@ZVVMgPD0?=W>dGGB<`D0
 R11
 32
 R23
@@ -79,10 +79,10 @@ R25
 R15
 R16
 nbody
-!s100 FRQ@b5@[1?SVQNi30llQJ3
+!s100 NNBn52GDXg2lN[[[38G1_3
 !i10b 1
 Emachine
-Z26 w1386799882
+Z26 w1387895174
 R1
 R2
 R3
@@ -98,7 +98,7 @@ L37
 V<V<7K1D7aKR7QMM9EAHCI0
 R11
 32
-Z29 !s108 1386800053.736902
+Z29 !s108 1387917828.460022
 Z30 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/machine.vhd|
 Z31 !s107 /home/sjeapes/svn/rtl/machine.vhd|
 R15
@@ -124,24 +124,24 @@ R30
 R31
 R15
 R16
-!s100 FSNhW70UVfo5][S[CSQeZ0
+!s100 CBU<ICahDJZR;MM5BfIU@2
 !i10b 1
 Eplugboard
-R20
+Z32 w1380661338
 R2
 R6
 R7
 R8
-Z32 8/home/sjeapes/svn/rtl/plugboard.vhd
-Z33 F/home/sjeapes/svn/rtl/plugboard.vhd
+Z33 8/home/sjeapes/svn/rtl/plugboard.vhd
+Z34 F/home/sjeapes/svn/rtl/plugboard.vhd
 l0
 L31
 V^H@ghg2Qogl6`dT]QXf=32
 R11
 32
-Z34 !s108 1386800053.790389
-Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/plugboard.vhd|
-Z36 !s107 /home/sjeapes/svn/rtl/plugboard.vhd|
+Z35 !s108 1387917828.515530
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/plugboard.vhd|
+Z37 !s107 /home/sjeapes/svn/rtl/plugboard.vhd|
 R15
 R16
 !s100 5K9W[TLEL>bf>bjS3Q^An3
@@ -156,68 +156,68 @@ L46
 V4G]>QkHiSFDATVhWaMNYV0
 R11
 32
-R34
 R35
 R36
+R37
 R15
 R16
 !s100 [iN0NjkiHTzRP[cNZDPb70
 !i10b 1
 Ereflector
-R20
+Z38 w1387904566
 R2
 R6
 R7
 R8
-Z37 8/home/sjeapes/svn/rtl/reflector.vhd
-Z38 F/home/sjeapes/svn/rtl/reflector.vhd
+Z39 8/home/sjeapes/svn/rtl/reflector.vhd
+Z40 F/home/sjeapes/svn/rtl/reflector.vhd
 l0
 L33
 V_DGh@>6IP8i[XnEoa0a@M2
 R11
 32
-Z39 !s108 1386800053.823934
-Z40 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/reflector.vhd|
-Z41 !s107 /home/sjeapes/svn/rtl/reflector.vhd|
+Z41 !s108 1387917828.549129
+Z42 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/reflector.vhd|
+Z43 !s107 /home/sjeapes/svn/rtl/reflector.vhd|
 R15
 R16
-!s100 R7SaVFok7nda3@d9S2h@:3
+!s100 ;MA>K:J^=fm9?aEU<EP4E0
 !i10b 1
 Artl
 R2
 R6
 R7
 DEx4 work 9 reflector 0 22 _DGh@>6IP8i[XnEoa0a@M2
-l51
-L46
+l50
+L45
 VZOEBEILL0=2DMWD>n4]803
 R11
 32
-R39
-R40
 R41
+R42
+R43
 R15
 R16
-!s100 Qi@2Xh3Wi_3NbDbhTNOW32
+!s100 e4C4b_;ja42Fi43PdO:YL3
 !i10b 1
 Etop_level
-R20
+R32
 R1
 R2
 R5
 R6
 R7
 R8
-Z42 8/home/sjeapes/svn/rtl/top_level.vhd
-Z43 F/home/sjeapes/svn/rtl/top_level.vhd
+Z44 8/home/sjeapes/svn/rtl/top_level.vhd
+Z45 F/home/sjeapes/svn/rtl/top_level.vhd
 l0
 L31
 Vk=Q;lgboU67JjaFaYUW5W1
 R11
 32
-Z44 !s108 1386800053.857656
-Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/top_level.vhd|
-Z46 !s107 /home/sjeapes/svn/rtl/top_level.vhd|
+Z46 !s108 1387917828.585226
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/top_level.vhd|
+Z48 !s107 /home/sjeapes/svn/rtl/top_level.vhd|
 R15
 R16
 !s100 b3g4G>6Ljo9OFAA[JEZS[1
@@ -234,30 +234,30 @@ L47
 Vz]=8Ke;4:C=d2[1<jfWfQ0
 R11
 32
-R44
-R45
 R46
+R47
+R48
 R15
 R16
 !s100 B>TB?Og`K:Y];eYIUOL7d2
 !i10b 1
 Ewheel
-Z47 w1386799324
+Z49 w1387906330
 R1
 R2
 R6
 R7
 R8
-Z48 8/home/sjeapes/svn/rtl/wheel.vhd
-Z49 F/home/sjeapes/svn/rtl/wheel.vhd
+Z50 8/home/sjeapes/svn/rtl/wheel.vhd
+Z51 F/home/sjeapes/svn/rtl/wheel.vhd
 l0
 L33
 VE^14Rkcnd@3glP]KZeifi0
 R11
 32
-Z50 !s108 1386800053.902179
-Z51 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/wheel.vhd|
-Z52 !s107 /home/sjeapes/svn/rtl/wheel.vhd|
+Z52 !s108 1387917828.664427
+Z53 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/wheel.vhd|
+Z54 !s107 /home/sjeapes/svn/rtl/wheel.vhd|
 R15
 R16
 !s100 `OB8ESC_MTNb@3zCBOfFR3
@@ -270,48 +270,48 @@ R7
 DEx4 work 5 wheel 0 22 E^14Rkcnd@3glP]KZeifi0
 l61
 L57
-V4PSHzVYMDFSk5AUdOPAZE3
+VZ]1l:^aK94]70d:cXn7@A2
+!s100 7k:1z<S;8jKc[7[o`?AHe2
 R11
 32
-R50
-R51
 R52
+R53
+R54
 R15
 R16
-!s100 9iQ>Q]R1j:]535iZD0RZ[1
 !i10b 1
 Pwheel_config_pak
 R2
-R20
+Z55 w1387917823
 R8
-Z53 8/home/sjeapes/svn/rtl/wheel_config_pak.vhd
-Z54 F/home/sjeapes/svn/rtl/wheel_config_pak.vhd
+Z56 8/home/sjeapes/svn/rtl/wheel_config_pak.vhd
+Z57 F/home/sjeapes/svn/rtl/wheel_config_pak.vhd
 l0
 L23
-VT9VF=BJj4CCSdePdS?R`K3
+Vogo_>D;8F9fH@=T^^kESV0
 R11
 32
 b1
-Z55 !s108 1386800053.936662
-Z56 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/wheel_config_pak.vhd|
-Z57 !s107 /home/sjeapes/svn/rtl/wheel_config_pak.vhd|
+Z58 !s108 1387917828.630599
+Z59 !s90 -reportprogress|300|-work|work|-2002|-explicit|/home/sjeapes/svn/rtl/wheel_config_pak.vhd|
+Z60 !s107 /home/sjeapes/svn/rtl/wheel_config_pak.vhd|
 R15
 R16
-!s100 ]4n]^ghj>i8G0]e4iSmQH3
+!s100 2]V>EaG7@53[5eW^>c5U@3
 !i10b 1
 Bbody
 R1
 R2
 l0
-L43
-VK1U]j_U```OADGGlHX7cJ3
-!s100 _6foJhd0GVUWWQJU^^5?Z2
+L45
+VJ[cFmaz_PkBG^6FXAk`593
 R11
 32
-R55
-R56
-R57
+R58
+R59
+R60
 R15
 R16
 nbody
+!s100 T@V=>7@YM7TdcmV01CA241
 !i10b 1

@@ -31,7 +31,6 @@ use work.letters_pak.all;
 
 
 entity reflector is
-
    port 
    (
       clk_in   :  in std_logic; --! Clock input signal, 
