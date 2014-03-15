@@ -65,6 +65,7 @@ end component;
 
 signal clk_tb, reset_tb : std_logic := '1';
 signal sig_tb : letter := ' ';
+signal result : letter;
 
 begin
   
@@ -91,11 +92,11 @@ process
     
     
     
-    for i in 0 to 10 loop
+    for i in 0 to 100 loop
 		sig_tb <= a;
-		wait for 2000 ns;
+		wait for 10000 ns;
 		sig_tb <= ' ';
-		wait for 2000 ns;
+		wait for 10000 ns;
 	end loop;
     
     
@@ -116,7 +117,7 @@ dut: machine
       clk_in   => clk_tb,
       reset_in => reset_tb,
       sig_in   => sig_tb, 
-      sig_out  => open      
+      sig_out  => result      
     );
   
   
