@@ -61,13 +61,21 @@ signal wheel_pos_int : letter;
 begin
 
 wheelEncode: process(clk_in,reset_in)
+variable toencodea, toencodeb : letter;
+variable encodeda, encodedb : letter;
 begin
    if reset_in = '1' then
       siga_out <= ' ';
       sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      siga_out <= encode_letter(siga_in, variant, TRUE);
-      sigb_out <= encode_letter(sigb_in, variant, FALSE);
+      toencodea := wheel_entry(TRUE, wheel_pos_int, siga_in);
+      toencodeb := wheel_entry(TRUE, wheel_pos_int, sigb_in);
+      
+      encodeda := encode_letter(toencodea, variant, TRUE);
+      encodedb := encode_letter(toencodeb, variant, FALSE);      
+      
+      siga_out <= wheel_entry(FALSE, wheel_pos_int, encodeda);
+      sigb_out <= wheel_entry(FALSE, wheel_pos_int, encodedb);
    end if;
 
 end process;
@@ -81,7 +89,7 @@ begin
       wheel_pos_int <= a;
    elsif rising_edge(clk_in) then
 		if turnover then
-			if wheel_set = ' ' then
+			if (wheel_set = ' ') then
 				wheel_pos_int <= increment(wheel_pos_int);
 			else
 				wheel_pos_int <= wheel_set;

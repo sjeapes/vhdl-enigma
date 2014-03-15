@@ -38,7 +38,7 @@ type t_wheel_set is array(wheel_variants) of wheel_def;
 
 function is_turnover_pos(wheel_pos: letter; variant: wheel_variants) return boolean;
 function encode_letter(to_encode: letter; variant: wheel_variants; forward: boolean) return letter;
-function wheel_entry_exit(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter;
+function wheel_entry(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter;
 
 end wheel_config_pak;
 
@@ -58,28 +58,28 @@ package body wheel_config_pak is
 --! Beta rotor	L	E	Y	J	V	C	N	I	X	W	P	B	Q	M	D	R	T	A	K	Z	G	F	U	H	O	S
 --! Gamma rotor	F	S	O	K	A	N	U	E	R	H	M	B	T	I	Y	C	W	L	Q	P	Z	X	V	G	J	D
 constant wheel_data: t_wheel_set :=  (
-      '1' => (turnover => (' ',r),
+      '1' => (turnover => (' ',q),
               wiring => (e,k,m,f,l,g,d,q,v,z,n,t,o,w,y,h,x,u,s,p,a,i,b,r,c,j,' '),
               reverse_wiring => (u,w,y,g,l,d,f,p,v,z,b,e,c,k,m,t,h,x,s,l,r,i,n,q,o,j,' ')),
-      '2' => (turnover => (' ',f),
+      '2' => (turnover => (' ',e),
               wiring => (a,j,d,k,s,i,r,u,x,b,l,h,w,t,m,c,q,g,z,n,p,y,f,v,o,r,' '),
               reverse_wiring => (a,j,p,c,z,w,r,l,f,b,d,k,o,t,y,u,q,g,e,n,h,x,m,i,v,s,' ')),
-      '3' => (turnover => (' ',w),
+      '3' => (turnover => (' ',v),
               wiring => (b,d,f,h,j,l,c,p,r,t,x,v,z,n,y,e,i,w,g,a,k,m,u,s,q,o,' '),
               reverse_wiring => (t,a,g,b,p,c,s,d,q,e,u,f,v,n,z,h,y,i,x,j,w,l,r,k,o,m,' ')),      
-      '4' => (turnover => (' ',k),
+      '4' => (turnover => (' ',j),
               wiring => (e,s,o,v,p,z,j,a,y,q,u,i,r,h,x,l,n,f,t,g,k,d,c,m,w,b,' '),
               reverse_wiring => (h,z,w,v,a,r,t,n,l,g,u,p,x,q,c,e,j,m,b,s,k,d,y,o,i,f,' ')),
-      '5' => (turnover => (' ',a),
+      '5' => (turnover => (' ',z),
               wiring => (v,z,b,r,g,i,t,y,u,p,s,d,n,h,l,x,a,w,m,j,q,o,f,e,c,k,' '),
               reverse_wiring => (q,c,y,l,x,w,e,n,f,t,z,o,s,m,v,j,u,d,k,g,i,a,r,p,h,b,' ')),
-      '6' => (turnover => (a,n),
+      '6' => (turnover => (z,m),
               wiring => (j,p,g,v,o,u,m,f,y,q,b,e,n,h,z,r,d,k,a,s,x,l,i,c,t,w,' '),
               reverse_wiring => (s,k,x,q,l,h,c,n,w,a,r,v,g,m,e,b,j,p,t,y,f,d,z,u,i,o,' ')),
-      '7' => (turnover => (a,n),
+      '7' => (turnover => (z,m),
               wiring => (n,z,j,h,g,r,c,x,m,y,s,w,b,o,u,f,a,i,v,l,p,e,k,q,d,t,' '),
               reverse_wiring => (q,m,g,y,v,p,e,d,r,c,w,t,i,a,n,u,x,f,k,z,o,s,l,h,j,b,' ')),
-      '8' => (turnover => (a,n),
+      '8' => (turnover => (z,m),
               wiring => (f,k,q,h,t,l,x,o,c,b,j,s,p,d,z,r,a,m,e,w,n,i,u,y,g,v,' '),
               reverse_wiring => (q,j,i,n,s,a,y,d,v,k,b,f,r,u,h,m,c,p,l,e,w,z,t,g,x,o,' ')),
       beta => (turnover => (' ',' '), --! Beta wheel can only be used in 4th position so doesn't have a turnover position
@@ -120,14 +120,34 @@ end encode_letter;
 --! entry: boolean - when true the function transposes from a letter into the wheel, when false it transposes from the wheel wiring out of the wheel
 --! wheel_pos: the wheel position
 --! encoded_letter: the letter to be transposed (either the letter to go into the wheel or the exit of the wiring to produce the letter to go out of the wheel)
-function wheel_entry_exit(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter is
+function wheel_entry(entry: boolean; wheel_pos: letter; encoded_letter: letter) return letter is
+variable inputnumber: integer range 0 to 26;
+variable wheelposnumber: integer range 0 to 25;
+variable offsetnumber: integer range 0 to 51;
+variable outputletter : letter;
 begin
-   if entry then
---! For entry transposition take entry letter, convert to number and then add together convert the remainder (after modulo 26 conversion) back to a letter
-      return encoded_letter;
-   else
-      return encoded_letter;
-   end if;   
-end wheel_entry_exit;
+   --! For entry transposition take entry letter, convert to number and then add together convert the remainder (after modulo 26 conversion) back to a letter
+   if encoded_letter = ' ' then
+		outputletter := ' ';
+   else   
+	   inputnumber := letter_to_number(encoded_letter);
+	   wheelposnumber := letter_to_number(wheel_pos);
+	   if entry then 
+			offsetnumber := inputnumber + wheelposnumber;
+			   if offsetnumber > 25 then
+					offsetnumber := offsetnumber - 26;
+			   end if;
+		else
+			if inputnumber < wheelposnumber then
+				offsetnumber := inputnumber + 26 - wheelposnumber;
+			else
+				offsetnumber := inputnumber - wheelposnumber;
+			end if;
+		end if;
+	   outputletter := number_to_letter(offsetnumber);	   
+	end if;
+	
+   return outputletter;
+end wheel_entry;
 
 end wheel_config_pak;
