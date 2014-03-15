@@ -205,7 +205,7 @@ begin
    if (reset_in = '1') then 
       keypress  <= FALSE;
    elsif rising_edge(clk_in) then
-      if sig_in_d2 /= sig_in_d1 then
+      if (sig_in_d2 /= sig_in_d1) and (sig_in_d1 /= ' ') then
          keypress <= TRUE;
       else
          keypress <= FALSE;
@@ -225,6 +225,7 @@ begin
    if (reset_in = '1') then
       turnover_wheel <= (others => FALSE);
    elsif rising_edge(clk_in)then
+      turnover_wheel <= (others => FALSE);
       turnover_wheel(0) <= keypress;
       for i in 1 to 3 loop
          if keypress then
