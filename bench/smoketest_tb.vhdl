@@ -92,7 +92,7 @@ process
     
     
     
-    for i in 0 to 100 loop
+    for i in 0 to 250 loop
 		sig_tb <= a;
 		wait for 10000 ns;
 		sig_tb <= ' ';
