@@ -228,9 +228,9 @@ begin
       turnover_wheel <= (others => FALSE);
       turnover_wheel(0) <= keypress;
       for i in 1 to 3 loop
-         if keypress then
-            turnover_wheel(i) <= is_turnover_pos(wheel_pos(i-1), wheel_order(i-1));
-         end if;
+        if turnover_wheel(i-1) then
+			turnover_wheel(i) <= is_turnover_pos(wheel_pos(i-1), wheel_order(i-1));
+		end if;
       end loop;
    end if;
 end process;   
