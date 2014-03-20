@@ -34,8 +34,8 @@ entity bench is
   generic(
       clk_period : time := 100 ns;
       num_wheels: integer := 3; --! The number of wheels in the machine, only 3 or 4 are valid
-      wheel_order: t_wheel_order := ('4','3','2','1'); --! The wheels fitted in the machine
-      double_step: boolean:= TRUE
+      wheel_order: t_wheel_order := ('4','3','2','1') --! The wheels fitted in the machine
+
   );
   port (
       test_running : inout boolean := true
@@ -48,7 +48,8 @@ architecture behav of bench is
 component machine
    generic(
       num_wheels: integer := 3; --! The number of wheels in the machine, only 3 or 4 are valid
-      wheel_order: t_wheel_order := ('4','3','2','1') --! The wheels fitted in the machine, highest wheel number to lowest
+      wheel_order: t_wheel_order := ('4','3','2','1'); --! The wheels fitted in the machine, highest wheel number to lowest
+      double_step: boolean:= TRUE 
    );
 
    port 
