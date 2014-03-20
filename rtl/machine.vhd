@@ -228,14 +228,15 @@ begin
    elsif rising_edge(clk_in)then
       turnover_wheel <= (others => FALSE);
       turnover_wheel(0) <= keypress;
-      for i in 1 to 3 loop
+      
+      turnover_wheel(1) <= ((is_turnover_pos(wheel_pos(1), wheel_order(1)) AND double_step) OR (is_turnover_pos(wheel_pos(0), wheel_order(0)))) AND turnover_wheel(0); --This statement accounts for the double stepping of the 2nd wheel when it is in it's own turn over position     
+      
+      for i in 2 to 3 loop
         if turnover_wheel(i-1) then
             turnover_wheel(i) <= is_turnover_pos(wheel_pos(i-1), wheel_order(i-1));
         end if;
-      if double_step then
-         turnover_wheel(2) <= is_turnover_pos(wheel_pos(2), wheel_order(2)); --This statement accounts for the double stepping of the 2nd wheel when it is in it's own turn over position
-      end if;
       end loop;
+	  
    end if;
 end process;   
 
