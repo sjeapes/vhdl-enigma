@@ -67,6 +67,10 @@ begin
    if reset_in = '1' then
       siga_out <= ' ';
       sigb_out <= ' ';
+      toencodea <= ' ';
+      toencodeb <= ' ';
+      encodeda <= ' ';
+      encodedb <= ' ';
    elsif rising_edge(clk_in) then
       toencodea <= wheel_entry(TRUE, wheel_pos_int, siga_in);
       toencodeb <= wheel_entry(TRUE, wheel_pos_int, sigb_in);
