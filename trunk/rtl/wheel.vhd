@@ -57,22 +57,22 @@ end entity;
 architecture rtl of wheel is
 
 signal wheel_pos_int : letter;
+signal toencodea, toencodeb : letter;
+signal encodeda, encodedb : letter;
 
 begin
 
 wheelEncode: process(clk_in,reset_in)
-variable toencodea, toencodeb : letter;
-variable encodeda, encodedb : letter;
 begin
    if reset_in = '1' then
       siga_out <= ' ';
       sigb_out <= ' ';
    elsif rising_edge(clk_in) then
-      toencodea := wheel_entry(TRUE, wheel_pos_int, siga_in);
-      toencodeb := wheel_entry(TRUE, wheel_pos_int, sigb_in);
+      toencodea <= wheel_entry(TRUE, wheel_pos_int, siga_in);
+      toencodeb <= wheel_entry(TRUE, wheel_pos_int, sigb_in);
       
-      encodeda := encode_letter(toencodea, variant, TRUE);
-      encodedb := encode_letter(toencodeb, variant, FALSE);      
+      encodeda <= encode_letter(toencodea, variant, TRUE);
+      encodedb <= encode_letter(toencodeb, variant, FALSE);      
       
       siga_out <= wheel_entry(FALSE, wheel_pos_int, encodeda);
       sigb_out <= wheel_entry(FALSE, wheel_pos_int, encodedb);

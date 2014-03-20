@@ -60,9 +60,9 @@ package body wheel_config_pak is
 constant wheel_data: t_wheel_set :=  (
       '1' => (turnover => (' ',q),
               wiring => (e,k,m,f,l,g,d,q,v,z,n,t,o,w,y,h,x,u,s,p,a,i,b,r,c,j,' '),
-              reverse_wiring => (u,w,y,g,l,d,f,p,v,z,b,e,c,k,m,t,h,x,s,l,r,i,n,q,o,j,' ')),
+              reverse_wiring => (u,w,y,g,a,d,f,p,v,z,b,e,c,k,m,t,h,x,s,l,r,i,n,q,o,j,' ')),
       '2' => (turnover => (' ',e),
-              wiring => (a,j,d,k,s,i,r,u,x,b,l,h,w,t,m,c,q,g,z,n,p,y,f,v,o,r,' '),
+              wiring => (a,j,d,k,s,i,r,u,x,b,l,h,w,t,m,c,q,g,z,n,p,y,f,v,o,e,' '),
               reverse_wiring => (a,j,p,c,z,w,r,l,f,b,d,k,o,t,y,u,q,g,e,n,h,x,m,i,v,s,' ')),
       '3' => (turnover => (' ',v),
               wiring => (b,d,f,h,j,l,c,p,r,t,x,v,z,n,y,e,i,w,g,a,k,m,u,s,q,o,' '),
