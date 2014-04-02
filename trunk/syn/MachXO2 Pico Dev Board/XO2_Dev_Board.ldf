@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="3.0" title="XO2_Dev_Board" device="LCMXO2-1200ZE-1MG132C" default_implementation="XO2_Dev_Board">
+    <Options>
+        <Option name="HDL type" value="VHDL"/>
+    </Options>
+    <Implementation title="XO2_Dev_Board" dir="XO2_Dev_Board" description="XO2_Dev_Board" synthesis="lse" default_strategy="Strategy1">
+        <Options def_top="top_level" top="top_level"/>
+        <Source name="top.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="top_level"/>
+        </Source>
+        <Source name="cap_button_sense.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="lcd_ctrl.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/wheel_config_pak.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/wheel.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/letters_pak.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/machine.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/plugboard.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="../../rtl/reflector.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="XO2_Dev_Board.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="XO2_Dev_Board1.sty"/>
+</BaliProject>
