@@ -1,4 +1,4 @@
-EESchema Schematic File Version 2  date Mon 24 Mar 2014 21:55:00 GMT
+EESchema Schematic File Version 2  date Tue 25 Mar 2014 19:29:51 GMT
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,13 +30,14 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:enigma_board
+LIBS:topsheet-cache
 EELAYER 25  0
 EELAYER END
 $Descr A4 11700 8267
 encoding utf-8
 Sheet 3 7
 Title ""
-Date "24 mar 2014"
+Date "25 mar 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -44,6 +45,58 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
+Text Notes 7000 4450 0    60   ~ 0
+Z
+Text Notes 4450 4450 0    60   ~ 0
+Y
+Text Notes 7000 4350 0    60   ~ 0
+X
+Text Notes 4450 4350 0    60   ~ 0
+W
+Text Notes 7000 4250 0    60   ~ 0
+V
+Text Notes 4450 4250 0    60   ~ 0
+U
+Text Notes 7000 4150 0    60   ~ 0
+T
+Text Notes 4450 4150 0    60   ~ 0
+S
+Text Notes 7000 4050 0    60   ~ 0
+R
+Text Notes 4450 4050 0    60   ~ 0
+Q
+Text Notes 7000 3950 0    60   ~ 0
+P
+Text Notes 4450 3950 0    60   ~ 0
+O
+Text Notes 7000 3850 0    60   ~ 0
+N
+Text Notes 4450 3850 0    60   ~ 0
+M
+Text Notes 7000 3750 0    60   ~ 0
+L
+Text Notes 4450 3750 0    60   ~ 0
+K
+Text Notes 7000 3650 0    60   ~ 0
+J
+Text Notes 4450 3650 0    60   ~ 0
+I
+Text Notes 7000 3550 0    60   ~ 0
+H
+Text Notes 4450 3550 0    60   ~ 0
+G
+Text Notes 7000 3450 0    60   ~ 0
+F
+Text Notes 4450 3450 0    60   ~ 0
+E
+Text Notes 7000 3350 0    60   ~ 0
+D
+Text Notes 4450 3350 0    60   ~ 0
+C
+Text Notes 7000 3250 0    60   ~ 0
+B
+Text Notes 4450 3250 0    60   ~ 0
+A
 Text GLabel 7750 4900 2    60   UnSpc ~ 0
 PLUG[0..25]
 Wire Bus Line

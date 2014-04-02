@@ -1,3 +1,8 @@
-EESchema-DOCLIB  Version 2.0  Date: Mon 24 Mar 2014 21:30:58 GMT
+EESchema-DOCLIB  Version 2.0  Date: Tue 25 Mar 2014 08:35:32 GMT
+#
+$CMP ICE40_HX4K
+D Lattice ice40 HX 3520 LUT 144 TQFP CPLD
+K CPLD 144TQFP 4K HX
+$ENDCMP
 #
 #End Doc Library
