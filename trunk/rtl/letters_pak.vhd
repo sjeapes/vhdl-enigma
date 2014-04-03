@@ -23,6 +23,8 @@
 
 
 
+library ieee;
+use ieee.std_logic_1164.all;
 
 package letters_pak is
 
@@ -33,6 +35,8 @@ function increment(toincrement: letter) return letter;
 
 function number_to_letter(num_to_convert: integer range 0 to 26) return letter;
 function letter_to_number(letter_to_convert: letter) return integer;
+
+function bitvector_to_letter(bitvector : std_logic_vector(25 downto 0)) return letter;
 
 end letters_pak;
 
@@ -69,6 +73,38 @@ begin
    return number_array(letter_to_convert);
 end letter_to_number;
 
+function bitvector_to_letter(bitvector : std_logic_vector(25 downto 0)) return letter is
+begin
+	case bitvector is
+		when "00000000000000000000000001" => return a;
+		when "00000000000000000000000010" => return b;
+		when "00000000000000000000000100" => return c;
+		when "00000000000000000000001000" => return d;
+		when "00000000000000000000010000" => return e;
+		when "00000000000000000000100000" => return f;
+		when "00000000000000000001000000" => return g;
+		when "00000000000000000010000000" => return h;
+		when "00000000000000000100000000" => return i;
+		when "00000000000000001000000000" => return j;
+		when "00000000000000010000000000" => return k;
+		when "00000000000000100000000000" => return l;
+		when "00000000000001000000000000" => return m;
+		when "00000000000010000000000000" => return n;
+		when "00000000000100000000000000" => return o;
+		when "00000000001000000000000000" => return p;
+		when "00000000010000000000000000" => return q;
+		when "00000000100000000000000000" => return r;
+		when "00000001000000000000000000" => return s;
+		when "00000010000000000000000000" => return t;
+		when "00000100000000000000000000" => return u;
+		when "00001000000000000000000000" => return v;
+		when "00010000000000000000000000" => return w;
+		when "00100000000000000000000000" => return x;
+		when "01000000000000000000000000" => return y;
+		when "10000000000000000000000000" => return z;
+		when others => return ' ';	
+	end case;
 
+end bitvector_to_letter;
 
 end letters_pak;
