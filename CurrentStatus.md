@@ -1,0 +1,1 @@
+Status updates will be through the [blog](http://vhdlenigma.wordpress.com/category/status/)

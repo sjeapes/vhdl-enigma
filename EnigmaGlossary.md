@@ -1,0 +1,7 @@
+| Term | Synonym | Definition |
+|:-----|:--------|:-----------|
+| Plugboard | Steckerboard | A board used to swap pairs of letters |
+| Reflector | UncleWalter / Unkehwalz | The wiring which sends the signal from the wheels back through the wheels again |
+| Wheel |  | Contains wiring to swap letters |
+| Plain-text |  |The un-encoded message |
+| Cypher-test|  |The encrypted message, should be a seemingly random set of letters|

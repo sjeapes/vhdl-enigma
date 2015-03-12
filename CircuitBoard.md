@@ -1,0 +1,129 @@
+# Requirements / Intentions #
+
+  * Cheap - Sub $50, ideally sub $30
+  * Hand-soldering possible
+  * Any accessories (e.g. for input or power) should be commonly available and inexpensive (<$10 cost for extras)
+
+# Design #
+
+Elements Required:
+  * Power Supply Input
+  * Local Regulation
+  * Input Method
+  * Plugboard
+  * CPLD
+  * Output Method
+  * Fixing/Tooling holes
+  * Programming interface
+  * 
+
+## Power ##
+Won't just use DC-brick unless it's a common connector
+Do not intend to supply PSU - adds too many complications with regions and safety implications
+
+
+  * Micro USB
+  * Battery
+    * PP3
+    * AA
+  * External + Battery?
+
+## Local Regulation ##
+Strongly suggest Linear Dropout Regulators (LDO) to generate 3.3V.
+
+Input 5V |
+> | -> LED (direct power from 5V
+> |
+> | -> 3.3V |
+> > | -> CPLD
+
+
+## Input ##
+
+Options
+  * PS/2 Keyboard
+  * Switches
+  * Capacitative Buttons
+  * Serial Port
+
+## Plugboard ##
+Currently internal but.....
+
+**Proposed for H/W**
+A set of headers and wires to allow plugging of letter pairs.
+
+**Option 1**
+The signalling wouldn't directly route via these wires (the actual mechanism using in the enigma has a plate to wire direct across the letter if no plug is inserted).
+
+The wiring would be used during reset to configure the plugboard, a walking '1' through all 26 letters, all other letters would be '0' if no wires were present, if any letters are paired the CPLD detects by seeing what other letters are '1' during this test
+
+**Option 2**
+Use the actual wiring during operation.
+This might require some careful consideration but might work.
+
+The method would be similar to option '1'.
+Output the letter through the plugboard, anything which is
+
+Due to the nature of the enigma machine the port will need to be bi-directional (the signal flows through the plugboard twice) but there won't be a conflict as the signal won't flow through the same pair of letters twice. However this would require two pairs of letters to be in use at the same time making the detection of correct pairing difficult.
+
+**Selection**
+Propose that option 1 is implemented to start with as it's technically less complex. After that the H/W and entity interface to the plugboard can remain the same if option 2 is implemented.
+
+
+## Output ##
+
+  * Serial Port
+  * LCD
+  * Individual (x26) LEDs
+
+
+## CPLD ##
+
+No BGA parts - TQFP to be used
+Estimated Logic requirements is TBD
+Number of pins required is TBD (number of pins unlikely to be a restricting factor on part selection)
+
+| Feature | Altera Max II/V | Lattice Mach-X02 | Xilinx CoolRunnerII |
+|:--------|:----------------|:-----------------|:--------------------|
+| Free Design S/W - Windows + Linux | Y | Y | Y |
+| TQFP Package    | Y | Y | Y |
+| RS Cost /unit (~1270LUT) (1)  | 23.36GBP | 8.04GBP | 5.25GPB |
+| Power Req(2)    | 3.3V / 1.8V & 3.3V | 3.3V | 3.3v|
+
+(1) Price of smallest ~1270LUT, TQFP package device on the UK RS website. All other chip options ignored and cheapest available for a single part selected. Prices correct as of 27-Jul-13
+(2) More power rails require more regulators to supply them which will increase cost
+
+### Other Notes ###
+**Altera**
+
+Altera device has internal oscillator which could be used avoiding the need for an external device
+
+Dev Kit cost - $74.95
+
+
+**Lattice**
+Free IP available (providing Lattice devices are used. IP Includes
+  * 8-bit and bigger soft-core processors
+  * I2C master & slave
+
+Hard-IP (timers, I2C) in Mach-X02 Parts
+
+Mach-X02 device has internal oscillator which could be used avoiding the need for an external device
+
+If the design is small enough there is also the ice40 range
+
+Dev Kit cost - $42.88 (Pico dev kit)
+Dev kit includes FTDI chips to allow serial link to chip, capacitive buttons (x4) and a small LCD screen for output.
+
+Lattuce also have the ice40 range which have smaller, cheaper packages so this is an option too.
+
+
+**Xilinx**
+More expensive, older devices and lack of familiarity rule this out for me.
+
+### Final Selection ###
+MaxXO2 for development due to availability of cheap dev boards
+
+Part for final PCB
+ice40 1280LUT, QFN84 £3.57 each for QTYs of 10 or greater
+http://uk.rs-online.com/web/p/fpgas/7720098/
