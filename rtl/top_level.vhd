@@ -56,7 +56,7 @@ component machine
       wheel_order: t_wheel_order := ('4','3','2','1') --! The wheels fitted in the machine, highest wheel number to lowest
    );
 
-   porth
+   port
    (
       clk_in   :  in std_logic; --! Clock input signal, 
          --! output signals will be synchroized to this clock domain
